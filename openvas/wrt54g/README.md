@@ -2,12 +2,12 @@
 
 ## 1. Overview
 
-**Target:** Linksys WRT54G (legacy SOHO router)  
+**Target:** Linksys WRT54G (legacy SOHO router, lab-isolated)  
 **IP Address:** `192.168.1.250`  
 **Assessment Type:** Authenticated web interface review + network vulnerability scan  
 **Tooling:** OpenVAS (Greenbone Community Edition), Nmap (optional), manual inspection  
 
-This assessment focuses on a legacy Linksys WRT54G device still present in the home network, evaluating its exposure, configuration weaknesses, and known vulnerabilities.
+This assessment focuses on a legacy Linksys WRT54G device that was **intentionally isolated in a lab environment**, connected to a dedicated Ethernet port and separated from the home Wi‑Fi network. The goal is to evaluate its exposure, configuration weaknesses, and known vulnerabilities without impacting the production network.
 
 ---
 
@@ -15,17 +15,17 @@ This assessment focuses on a legacy Linksys WRT54G device still present in the h
 
 **Scope:**
 
-- Web management interface (`http://192.168.1.250/`)
-- Network services exposed by the device
-- Firmware version and known CVEs
-- Configuration and hardening status
+- Web management interface (`http://192.168.1.250/`) in an isolated lab segment  
+- Network services exposed by the device  
+- Firmware version and known CVEs  
+- Configuration and hardening status  
 
 **Objectives:**
 
 - Identify exposed services and potential attack surface  
 - Detect known vulnerabilities (CVEs) via OpenVAS  
 - Assess configuration weaknesses (default creds, outdated firmware, insecure protocols)  
-- Provide remediation steps and decommissioning recommendations  
+- Provide remediation steps and recommendations for safe reuse (lab, IoT segment) or decommissioning  
 
 ---
 
@@ -67,28 +67,27 @@ This assessment focuses on a legacy Linksys WRT54G device still present in the h
 
 ## 4. Key Findings
 
-> Note: This section should be updated based on the actual OpenVAS report and manual review.
+## 4. Key Findings
 
 **Example structure:**
 
-- **Finding 1 – Outdated firmware with known vulnerabilities**  
-  - Severity: High  
-  - Description: Device is running an unsupported firmware version with multiple publicly known CVEs.  
-  - Impact: Increased risk of remote or local compromise.  
-  - Evidence: OpenVAS report (see reports/), vendor advisories.  
-  - Recommendation: Upgrade firmware if supported; otherwise, plan decommissioning.  
-
-- **Finding 2 – Weak or default administrative credentials**  
+- **Finding 1 – Insecure default configuration in lab context**  
   - Severity: Critical  
-  - Description: Administrative interface accessible with weak or default credentials.  
-  - Impact: Full control of router configuration and potential pivot into the network.  
-  - Recommendation: Enforce strong, unique password; disable remote management; restrict access.  
+  - Description: Device running with near-default settings, including weak or default credentials and insecure management exposure.  
+  - Impact: Full control of router configuration and potential pivot within any network segment where it is deployed.  
+  - Recommendation: Enforce strong, unique credentials; harden configuration; restrict access to trusted hosts; avoid using as primary router.
 
-- **Finding 3 – Insecure management protocols**  
+- **Finding 2 – Insecure management protocols (HTTP only)**  
   - Severity: Medium  
-  - Description: Management interface exposed over HTTP only.  
-  - Impact: Credentials can be intercepted.  
-  - Recommendation: Enable HTTPS if possible; otherwise, limit access and consider replacement.  
+  - Description: Management interface exposed over cleartext HTTP.  
+  - Impact: Credentials can be intercepted by an attacker with access to the same network segment.  
+  - Recommendation: Enable HTTPS if possible; otherwise, strictly limit access and consider replacement or use only in isolated lab/IoT environments.
+
+- **Finding 3 – Legacy firmware and limited vendor support**  
+  - Severity: Medium  
+  - Description: Device relies on legacy firmware with limited or no vendor support.  
+  - Impact: Increased long-term risk due to unpatched vulnerabilities and lack of security updates.  
+  - Recommendation: Upgrade to the latest available firmware if possible; otherwise, restrict usage to lab or non-critical roles and plan eventual decommissioning.
 
 ---
 
