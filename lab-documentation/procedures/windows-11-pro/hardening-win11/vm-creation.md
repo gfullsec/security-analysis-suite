@@ -26,6 +26,7 @@ Create a Windows 11 Pro virtual machine to serve as a controlled laboratory envi
 - **Platform:** Oracle VirtualBox 7.2.6 r172322
 
 The virtual machine was created in Oracle VirtualBox using the Windows 11 installation media shown below.
+
  
 ![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2013-59-58.png)
  
@@ -35,6 +36,12 @@ The virtual machine was created in Oracle VirtualBox using the Windows 11 instal
 - **CPU:** 2 vCPU
 - **Disk Size:** 80 GB
 - **Disk Format:** Dynamic VDI
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-01-10.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-02-07.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-03-24.png)
  
 ### Justification
  
@@ -51,6 +58,10 @@ Resources were allocated to provide a stable environment capable of running Wind
 - **Secure Boot:** Enabled
 - **I/O APIC:** Enabled
 - **Chipset:** PIIX3
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-05-12.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-07-10.png)
  
 ### Justification
  
@@ -132,6 +143,8 @@ This configuration provides compatibility with the physical keyboard while prese
 ## Selected Edition
  
 - **Windows 11 Pro**
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-20-24.png)
  
 ### Justification
  
@@ -151,11 +164,15 @@ Windows 11 Pro is also the edition most commonly referenced by CIS Benchmarks an
 ### Installation Method
  
 - Clean Installation
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-22-48.png)
  
 ### Target Disk
  
 - Disk 0 Unallocated Space
 - 80 GB
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-22-16.png)
  
 ### Applied Configuration
  
@@ -168,6 +185,12 @@ Windows automatically generated the required GPT partitions for a UEFI-based ins
 During OOBE, Windows prompted for Microsoft account configuration.
  
 A local account was chosen instead.
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-39-33.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-41-57.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-42-59.png)
  
 ### Procedure
  
@@ -206,6 +229,8 @@ The laboratory environment should remain:
 ```text
 hardening-win11
 ```
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-37-18.png)
  
 ### Justification
  
@@ -227,6 +252,17 @@ Windows : hardening-win11
 - **Diagnostic Data:** Required Only
 - **Improve Inking & Typing:** Disabled
 - **Personalized Offers:** Disabled
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-46-09.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-46-32.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-47-09.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-47-39.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-48-00.png)
+
  
 ### Justification
  
@@ -249,6 +285,8 @@ Result:
 ```text
 hardening-win11
 ```
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-49-29.png)
  
 ### User Verification
  
@@ -263,6 +301,8 @@ Result:
 ```text
 hardening-win11\grs
 ```
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-49-57.png)
  
 ### Network Verification
  
@@ -278,6 +318,8 @@ Result:
 IPv4 Address: 10.0.2.15
 Gateway: 10.0.2.2
 ```
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-50-17.png)
  
 ### Operating System Verification
  
@@ -294,6 +336,8 @@ Windows 11 Pro
 Version 26H2
 Build 26300.9457
 ```
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-50-44.png)
  
 ---
  
@@ -319,6 +363,8 @@ Final verification:
 ```text
 You're up to date
 ```
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-55-26.png)
  
 ---
  
@@ -329,6 +375,10 @@ You're up to date
 ```text
 M3-BASELINE-CLEAN-W11
 ```
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-57-44.png)
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-58-17.png)
  
 ### Objective
  
