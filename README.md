@@ -12,6 +12,7 @@ The objective of this repository is:
  
 ## 📂 Repository structure
  
+```text
 security-analysis-suite/
 │
 ├── openvas/
@@ -23,6 +24,7 @@ security-analysis-suite/
 │ └── workstation-hardening-project/
 │
 └── lab-documentation/
+```
  
 ### OpenVAS
  
