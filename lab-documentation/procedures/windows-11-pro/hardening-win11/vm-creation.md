@@ -27,7 +27,7 @@ Create a Windows 11 Pro virtual machine to serve as a controlled laboratory envi
 
 The virtual machine was created in Oracle VirtualBox using the Windows 11 installation media shown below.
  
-./images/Captura desde 2026-10-03 13-59-58.png
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2013-59-58.png)
  
 ### Assigned Resources
  
