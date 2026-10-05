@@ -1,29 +1,50 @@
 # 📘 Security Analysis Suite
-
-This repository collects the security assessments I perform as part of my cybersecurity practice and training. Each analysis is executed in a controlled and documented environment, using tools such as OpenVAS, Lynis, Nmap, and various OSINT techniques.
-
-The purpose of this repository is to:
-
-- Maintain an organized collection of audits and evaluations.  
-- Document reproducible procedures and best practices.  
-- Serve as a technical foundation for my GitHub Page.  
-- Clearly and structurally showcase my progress and experience in security.  
-
-## 📂 Repository Structure
-
-- **openvas/** → Vulnerability assessments performed with OpenVAS.  
-- **lynis/** → Linux system audits.  
-- **nmap/** → Network mapping and analysis.  
-- **osint/** → Information gathering using Shodan, FOFA, and other sources.  
-
-Each folder contains:
-
-- PDF reports.  
-- Screenshots.  
-- Environment diagrams.  
-- Technical notes.  
-- Conclusions and recommendations.  
-
-## 🔗 GitHub Page Integration
-
-The analyses included in this repository will be linked from my GitHub Page, where they will be presented in a summarized and organized manner to facilitate reading and navigation.
+ 
+Repository dedicated to documenting security audits, hardening projects, and activities carried out in a controlled laboratory environment.
+ 
+The objective of this repository is:
+ 
+- Document security analyses and assessments in a structured way.
+- Record hardening and remediation processes.
+- Maintain technical evidence, reports, and reproducible procedures.
+- Serve as technical support for my GitHub Pages and professional portfolio.
+- Showcase my practical evolution in defensive cybersecurity.
+ 
+## 📂 Repository structure
+ 
+security-analysis-suite/
+│
+├── openvas/
+│
+├── hardening/
+│ ├── linux/
+│ │ └── lynis/
+│ ├── windows/
+│ └── workstation-hardening-project/
+│
+└── lab-documentation/
+ 
+### OpenVAS
+ 
+Contains vulnerability audits performed with OpenVAS, including reports, evidence, and associated technical documentation.
+ 
+### Hardening
+ 
+Documentation related to strengthening systems and applying security measures.
+ 
+- **linux/lynis/**: security audits and assessments performed with Lynis.
+- **windows/**: hardening activities and security configurations for Windows systems.
+- **workstation-hardening-project/**: practical hardening project on a real workstation, including assessment, remediation, and validation.
+ 
+### Lab Documentation
+ 
+Information related to the laboratory used for the exercises:
+ 
+- Architecture and topology.
+- System inventory.
+- Procedures and configurations.
+- Diagrams and supporting documentation.
+ 
+## 🔗 GitHub Pages integration
+ 
+The projects and analyses documented in this repository are used as technical support for my portfolio, providing evidence, methodology, and detailed documentation of the work carried out.
