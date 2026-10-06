@@ -554,6 +554,43 @@ Todo el acceso a red se realizará desde Ubuntu, reduciendo drásticamente la ex
  
 ---
  
+## Evaluación de Riesgos y Controles
+ 
+La solución propuesta no solo responde a una necesidad de continuidad operativa, sino que también reduce significativamente la superficie de ataque del entorno. La siguiente evaluación complementa el análisis inicial con una visión más orientada a seguridad y a la presentación del caso como proyecto profesional.
+ 
+### Matriz de riesgos
+ 
+| Riesgo | Impacto | Probabilidad | Descripción | Tratamiento propuesto |
+| --- | --- | --- | --- | --- |
+| Windows 10 sin soporte | Alto | Alto | El sistema operativo principal no recibe parches ni actualizaciones de seguridad, incrementando la exposición a malware y vulnerabilidades conocidas. | Aislar la VM de Windows 10, limitar el acceso a Internet y mantenerla solo para software crítico. |
+| Dependencia de software legacy | Alto | Alto | Adobe Photoshop e Illustrator siguen siendo herramientas críticas para la operación del taller, pero dependen de un entorno antiguo y menos seguro. | Mantener esas aplicaciones dentro de una máquina virtual aislada y reducir la dependencia progresiva hacia Linux. |
+| Exposición de host a Internet | Alto | Medio | Un sistema operativo moderno expuesto directamente a la red representa un punto de entrada más seguro para navegación y correo, pero debe configurarse con controles estrictos. | Realizar el acceso a Internet únicamente desde Ubuntu con hardening del host y restricciones de red. |
+| Intercambio de archivos entre host y VM | Medio | Medio | La transferencia de documentos entre sistemas puede exponer datos sensibles si la carpeta compartida no está restringida o monitorizada. | Separar almacenamiento, definir permisos mínimos y mantener la carpeta compartida únicamente para trabajo designado. |
+| Periféricos con compatibilidad limitada | Medio | Medio | Dispositivos como el escáner Canon MF3010 pueden presentar problemas de soporte en Linux y requerir contingencias. | Probar compatibilidad nativa, mantener USB Passthrough como alternativa y documentar el flujo de recuperación. |
+| Pérdida de información crítica | Alto | Medio | El usuario trabaja con archivos de diseño y documentación profesional; una pérdida de datos puede afectar la continuidad del negocio. | Realizar copias de seguridad periódicas, separar almacenamiento y mantener instantáneas del entorno virtual. |
+
+### Activos críticos
+ 
+- Ubuntu 26.04 LTS como sistema anfitrión y punto de acceso seguro a la red.
+- Windows 10 virtualizado como entorno de software legacy y de uso limitado.
+- Datos de diseño gráfico y documentación del taller.
+- Wacom CTL-460, Canon MF3010 y HP LaserJet 5000N.
+- Estrategia de copia de seguridad y recuperación ante fallos.
+
+### Controles clave propuestos
+ 
+- Aislamiento de la máquina virtual de Windows 10 del acceso directo a Internet.
+- Uso de Ubuntu como único entorno para navegación, correo, banca y tareas no críticas.
+- Segmentación del almacenamiento entre sistema, datos y copia de seguridad.
+- Mantenimiento de una carpeta compartida controlada para intercambio de archivos entre host y VM.
+- Reducción progresiva de dependencias de software propietario mediante GIMP e Inkscape.
+- Hardening del sistema anfitrión, incluyendo gestión de usuarios, permisos y control de red.
+- Verificación de compatibilidad de periféricos antes de la migración completa.
+- Copias de seguridad y pruebas de restauración de la máquina virtual.
+
+ 
+---
+ 
 ## Conclusión
  
 El análisis inicial confirma que el hardware actual continúa siendo válido para la actividad profesional del usuario. Sin embargo, la dependencia de Windows 10 y de aplicaciones legacy requiere una estrategia de aislamiento que permita mantener la operativa sin asumir los riesgos asociados al uso de un sistema operativo sin soporte.
