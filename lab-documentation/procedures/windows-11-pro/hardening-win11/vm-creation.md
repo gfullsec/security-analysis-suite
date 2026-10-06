@@ -61,8 +61,6 @@ Resources were allocated to provide a stable environment capable of running Wind
 
 ![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-05-12.png)
 
-![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-07-10.png)
- 
 ### Justification
  
 The default VirtualBox configuration recommended for Windows 11 was maintained.
@@ -81,6 +79,8 @@ satisfies modern Windows 11 installation requirements while providing a realisti
 - **PAE/NX:** Enabled
 - **Execution Cap:** 100%
 - **Nested VT-x/AMD-V:** Disabled
+
+![Oracle VirtualBox VM creation wizard](./images/Captura%20desde%202026-10-03%2014-07-10.png)
  
 ### Justification
  
