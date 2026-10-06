@@ -594,9 +594,12 @@ La solución propuesta no solo responde a una necesidad de continuidad operativa
 ## Conclusión
  
 El análisis inicial confirma que el hardware actual continúa siendo válido para la actividad profesional del usuario. Sin embargo, la dependencia de Windows 10 y de aplicaciones legacy requiere una estrategia de aislamiento que permita mantener la operativa sin asumir los riesgos asociados al uso de un sistema operativo sin soporte.
+
  
 La solución propuesta no se limita al aislamiento de un sistema legacy. También establece las bases para una transición tecnológica progresiva que permita reducir la dependencia de software sin soporte, fomentar el uso de herramientas abiertas como GIMP e Inkscape, y facilitar la adopción de nuevas tecnologías mediante asistencia guiada y aprendizaje continuo.
+
  
 El objetivo final es prolongar la vida útil de la plataforma durante al menos una década adicional, preservando la continuidad operativa del negocio y maximizando el aprovechamiento de una infraestructura que, a pesar de su antigüedad, continúa siendo técnicamente válida para las necesidades actuales.
+
 
 La adopción progresiva de soluciones basadas en software libre también contribuirá a reducir la dependencia de licencias propietarias y servicios de suscripción, mejorando la sostenibilidad económica del entorno de trabajo a largo plazo.
