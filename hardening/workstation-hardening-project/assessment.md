@@ -20,8 +20,9 @@ Adicionalmente, esta estrategia permite reducir la dependencia de nuevas adquisi
 
 ### Software crítico
 
-- Adobe Photoshop
-- Adobe Illustrator
+- Adobe Photoshop CS6
+- Adobe Illustrator CS6
+- Adobe InDesign CS4
 
 ### Hardware crítico
 
@@ -41,6 +42,9 @@ Adicionalmente, esta estrategia permite reducir la dependencia de nuevas adquisi
 
 > [!TODO]
 > Añadir captura de Illustrator instalado y operativo.
+
+> [!TODO]
+> Añadir captura de InDesign instalado y operativo.
 
 > [!TODO]
 > Añadir fotografía de la Wacom CTL-460.
@@ -147,7 +151,7 @@ El equipo utiliza actualmente Windows 10 como sistema operativo principal.
 
 ### Limitaciones
 
-La sustitución completa del entorno Windows no es viable actualmente debido a la dependencia de Adobe Photoshop, Adobe Illustrator y del ecosistema de periféricos utilizado en el taller.
+La sustitución completa del entorno Windows no es viable actualmente debido a la dependencia de Adobe Photoshop, Adobe Illustrator, Adobe InDesign y del ecosistema de periféricos utilizado en el taller.
 
 ---
 ## Evaluación de Compatibilidad de Periféricos
@@ -243,6 +247,7 @@ Ubuntu
 Windows 10 VM
 ├── Photoshop
 └── Illustrator
+└── InDesign
 ```
 
 La Wacom deberá funcionar tanto en Ubuntu como en Windows 10 virtualizado, permitiendo utilizar la tableta gráfica con aplicaciones nativas de Linux (GIMP e Inkscape) y con las aplicaciones Adobe que permanezcan dentro de la máquina virtual durante el periodo de transición.
@@ -333,7 +338,7 @@ La coexistencia de ambas aplicaciones permitirá:
 
 ### Inkscape como alternativa a Illustrator
 
-Además de Adobe Illustrator, el usuario utiliza herramientas de diseño vectorial como parte de su flujo de trabajo habitual dentro del taller.
+Además de Photoshop el usuario utilizaba Adobe Illustrator, como herramienta de diseño vectorial como parte de su flujo de trabajo habitual dentro del taller. Sin embargo se detecta que el software no funciona en las validaciones previas
 
 Con el objetivo de reducir la dependencia de software propietario y facilitar una futura migración completa hacia Linux, se evaluará el uso de Inkscape como alternativa libre para trabajos de ilustración y diseño vectorial.
 
@@ -345,6 +350,10 @@ La coexistencia inicial de Illustrator e Inkscape permitirá:
 - Favorecer la adopción de herramientas nativas en Ubuntu.
 - Mejorar la autonomía tecnológica del usuario.
 
+### Scribus como alternativa a InDesign
+
+Adobe InDesign CS4 también formaba parte del flujo de trabajo del usuario, pero durante las validaciones se comprobó que la licencia aparece caducada y que la aplicación no arranca. Por este motivo, se evaluará Scribus como alternativa libre para tareas de maquetación y autoedición en Ubuntu, verificando su adecuación al flujo de trabajo y la compatibilidad de los documentos existentes.
+
 ### Estrategia de adopción
 
 La transición no será inmediata.
@@ -354,6 +363,7 @@ Durante una fase inicial convivirán:
 ```text
 Photoshop → GIMP
 Illustrator → Inkscape
+InDesign → Scribus
 ```
 
 Esto permitirá al usuario familiarizarse con las nuevas herramientas sin afectar a la productividad diaria del negocio.
@@ -373,6 +383,7 @@ Como apoyo al proceso de aprendizaje se utilizará Lumo como asistente para:
 - Resolver dudas sobre Ubuntu.
 - Aprender funciones equivalentes entre Photoshop y GIMP.
 - Aprender funciones equivalentes entre Illustrator e Inkscape.
+- Aprender funciones equivalentes entre InDesign y Scribus.
 - Guiar tareas básicas de configuración y administración.
 - Reducir la curva de aprendizaje durante la transición.
 
@@ -381,20 +392,22 @@ Como apoyo al proceso de aprendizaje se utilizará Lumo como asistente para:
 #### Corto plazo
 
 - Photoshop continúa funcionando dentro de la máquina virtual.
-- Illustrator continúa funcionando dentro de la máquina virtual.
+- Illustrator se sustituirá por Inkscape.
+- InDesign se sustituirá por Scribus.
 - El flujo de trabajo actual permanece operativo.
 - No existe impacto significativo sobre la productividad.
 
 #### Medio plazo
 
-- GIMP comienza a utilizarse para tareas de edición de imagen.
-- Inkscape comienza a utilizarse para tareas de diseño vectorial.
-- El usuario adquiere familiaridad con Ubuntu.
+- El usuario trabaja habitualmente con GIMP para tareas de edición de imagen.
+- El usuario trabaja habitualmente con Inkscape para tareas de diseño vectorial.
+- El usuario trabaja habitualmente con Scribus para tareas de maquetación y autoedición.
+- El usuario utiliza Ubuntu con autonomía en sus tareas habituales.
 - Se reduce progresivamente la dependencia diaria de Windows.
 
 #### Largo plazo
 
-- El usuario puede desempeñar gran parte de su actividad profesional desde Linux utilizando GIMP e Inkscape como alternativas principales a Photoshop e Illustrator.
+- El usuario puede desempeñar gran parte de su actividad profesional desde Linux utilizando GIMP, Inkscape y Scribus como alternativas principales a Photoshop, Illustrator e InDesign.
 - La dependencia de Windows 10 se reduce al mínimo o desaparece.
 - Se elimina la necesidad de mantener software sin soporte como requisito operativo.
 
