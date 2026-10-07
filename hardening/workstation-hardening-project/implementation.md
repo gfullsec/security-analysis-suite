@@ -1,13 +1,13 @@
 # Implementación de la Migración del Sistema Legacy
- 
+
 ## Resumen
- 
+
 Este documento registra el proceso de implementación de la arquitectura definida durante la fase de análisis del sistema legacy.
- 
+
 El objetivo es documentar de forma cronológica y reproducible las acciones realizadas para migrar el entorno actual basado en Windows 10 hacia una arquitectura en la que Ubuntu 26.04 LTS funcione como sistema anfitrión y Windows 10 permanezca disponible dentro de una máquina virtual aislada para ejecutar el software legacy necesario.
- 
+
 Durante la implementación se documentarán:
- 
+
 - Modificaciones de hardware.
 - Preparación y reorganización del sistema Windows 10 original.
 - Creación y verificación de la imagen de respaldo.
@@ -22,73 +22,73 @@ Durante la implementación se documentarán:
 - Medidas de hardening aplicadas.
 - Incidencias y desviaciones respecto al diseño inicial.
 - Evidencias técnicas de cada fase.
- 
+
 > [!IMPORTANT]
 > Ninguna modificación irreversible sobre el sistema original deberá realizarse sin disponer previamente de una copia de seguridad verificada.
- 
+
 ---
- 
+
 # 1. Estado Inicial de la Implementación
- 
+
 Antes de iniciar las modificaciones de hardware o la instalación del nuevo sistema anfitrión se verificará el estado actual del sistema y se recopilarán las evidencias necesarias para disponer de una referencia previa a la migración.
- 
+
 ## 1.1 Estado del hardware
- 
+
 Configuración de partida:
- 
+
 - CPU: Intel Core i5-3330
 - Placa base: Gigabyte GA-Z77-DS3H
 - RAM: 16 GB DDR3-1333
 - GPU: NVIDIA GeForce GT 630 2 GB
 - Disco principal: 1 TB
 - Disco secundario: 1 TB, identificado como `ALMACÉN`
- 
+
 ### Evidencias
- 
+
 > [!TODO]
 > Añadir fotografía general del equipo antes de modificar el hardware.
- 
+
 > [!TODO]
 > Añadir fotografía del interior del equipo antes de instalar el SSD y la tarjeta Wi-Fi.
- 
+
 > [!TODO]
 > Añadir captura de CPU-Z, HWiNFO o herramienta equivalente mostrando CPU, placa base y memoria.
- 
+
 > [!TODO]
 > Añadir captura de Administración de discos mostrando todos los dispositivos de almacenamiento antes de comenzar la migración.
- 
+
 ---
- 
+
 # 2. Preparación del Sistema Windows 10
- 
+
 ## 2.1 Objetivo
- 
+
 Antes de crear la imagen definitiva del sistema Windows 10 es necesario reducir el espacio ocupado por la instalación para permitir su posterior migración al SSD recuperado destinado a almacenar la máquina virtual.
- 
+
 Durante la fase de análisis se había previsto trasladar archivos históricos y otros datos al disco `ALMACÉN` si fuera necesario.
- 
+
 Finalmente, esta operación no fue necesaria.
- 
+
 ## 2.2 Limpieza del sistema
- 
+
 La reducción de espacio se realizó eliminando datos innecesarios generados por el propio sistema operativo.
- 
+
 Se eliminaron:
- 
+
 - Instalaciones anteriores de Windows.
 - Archivos de actualización de Windows.
 - Archivos temporales.
 - Otros archivos del sistema identificados como prescindibles durante el proceso de limpieza.
- 
+
 No fue necesario trasladar archivos del usuario ni datos históricos al disco `ALMACÉN`.
- 
+
 ## 2.3 Resultado
- 
+
 Después de realizar la limpieza, el espacio ocupado por la instalación de Windows 10 quedó reducido aproximadamente a:
- 
+
 ```text
 90 GB
-``
+```
 
 
 ## 2.4 Desviación respecto al plan inicial
