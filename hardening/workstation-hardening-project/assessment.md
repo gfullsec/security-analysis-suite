@@ -1,232 +1,232 @@
-# Análisis Inicial del Sistema Legacy
+# Initial Analysis of the Legacy System
 
-## Resumen
+## Summary
 
-Este documento recoge el análisis inicial del equipo utilizado para diseño gráfico profesional en un taller de serigrafía y las consideraciones técnicas previas a la migración hacia una arquitectura más segura basada en virtualización.
+This document presents the initial assessment of the computer used for professional graphic design in a screen-printing workshop, along with the technical considerations preceding migration to a more secure virtualization-based architecture.
 
-El objetivo de esta fase es identificar riesgos, limitaciones, dependencias y oportunidades de mejora antes de realizar cualquier modificación sobre el sistema.
+The objective of this phase is to identify risks, limitations, dependencies, and opportunities for improvement before making any changes to the system.
 
 ---
 
-## Contexto
+## Context
 
-El equipo es utilizado diariamente para tareas de diseño gráfico y producción documental.
+The computer is used daily for graphic design and document production.
 
-Las aplicaciones y periféricos actualmente en uso son esenciales para la actividad profesional del usuario y deben mantenerse operativos durante y después de la migración.
+The applications and peripherals currently in use are essential to the user's professional work and must remain operational during and after the migration.
 
-El proyecto no persigue únicamente mejorar la postura de seguridad del sistema. También busca prolongar la vida útil de una plataforma que continúa siendo funcional para las necesidades del usuario, evitando la sustitución prematura del hardware mediante una combinación de virtualización, software libre y modernización progresiva del entorno de trabajo.
+The project is not solely intended to improve the system's security posture. It also aims to extend the service life of a platform that remains functional for the user's needs, avoiding premature hardware replacement through a combination of virtualization, free software, and the gradual modernization of the work environment.
 
-Adicionalmente, esta estrategia permite reducir la dependencia de nuevas adquisiciones de software propietario y de modelos de suscripción recurrente, favoreciendo una transición gradual hacia herramientas abiertas que puedan garantizar la continuidad operativa del negocio sin incrementar los costes de licenciamiento.
+Additionally, this strategy helps reduce reliance on new proprietary software purchases and recurring subscription models, supporting a gradual transition to open tools that can ensure business continuity without increasing licensing costs.
 
-### Software crítico
+### Critical Software
 
 - Adobe Photoshop CS6
 - Adobe Illustrator CS6
 - Adobe InDesign CS4
 
-### Hardware crítico
+### Critical Hardware
 
-- Tableta gráfica Wacom CTL-460
-![Tableta gráfica Wacom Bamboo CTL-460](./images/implementation/Captura%20desde%202026-10-13%2012-56-31.png)
+- Wacom CTL-460 graphics tablet
+![Wacom Bamboo CTL-460 graphics tablet](./images/implementation/Captura%20desde%202026-10-13%2012-56-31.png)
 
-![Tableta gráfica Wacom Bamboo CTL-460](./images/implementation/Captura%20desde%202026-10-13%2013-00-03.png)
+![Wacom Bamboo CTL-460 graphics tablet](./images/implementation/Captura%20desde%202026-10-13%2013-00-03.png)
 
-- Impresora - Escáner Canon MF3010
+- Canon MF3010 printer and scanner
 > [!TODO]
-> Añadir fotografía de la Canon MF3010.
+> Add a photo of the Canon MF3010.
 
-- Impresora HP LaserJet 5000N
+- HP LaserJet 5000N printer
 > [!TODO]
-> Añadir fotografía de la HP LaserJet 5000N.
+> Add a photo of the HP LaserJet 5000N.
 
-### Perfil de usuario
+### User Profile
 
-- Usuario no técnico
-- Dependencia diaria del equipo para su actividad profesional
-- Necesidad de minimizar interrupciones del servicio
-- Necesidad de no ampliar los costes en renovacion de licencias o nuevas subscripciones debido a su volumen de negocio
+- Non-technical user
+- Daily reliance on the computer for professional work
+- Need to minimize service interruptions
+- Need to avoid increasing licensing or new subscription costs given the business's operating scale
 
 
 ---
 
-## Inventario de Hardware
+## Hardware Inventory
 
-### Equipo principal
+### Main Computer
 
-El equipo fue diseñado, adquirido y ensamblado en 2012 específicamente para cubrir las necesidades de un entorno profesional de diseño gráfico.
+The computer was designed, purchased, and assembled in 2012 specifically to meet the needs of a professional graphic design environment.
 
-La plataforma fue desplegada inicialmente con Windows 7 y concebida con un objetivo de larga duración, priorizando componentes fiables, fácilmente mantenibles y con una vida útil estimada superior a la habitual para un equipo de escritorio de la época.
+The platform was initially deployed with Windows 7 and designed for long-term use, prioritizing reliable, easily maintainable components with an estimated service life longer than that typical of a desktop computer of its era.
 
-Catorce años después de su puesta en servicio, el sistema continúa siendo funcional para las necesidades actuales del usuario y sigue permitiendo desarrollar la actividad profesional diaria sin limitaciones significativas de rendimiento.
+Fourteen years after it was put into service, the system remains functional for the user's current needs and continues to support daily professional work without significant performance limitations.
 
-La principal limitación identificada no está relacionada con el hardware sino con el ciclo de vida del software utilizado. La plataforma no cumple los requisitos exigidos por Microsoft para una actualización oficial a Windows 11, mientras que Windows 10 ha alcanzado el final de su ciclo de soporte.
+The main limitation identified is not related to the hardware but to the lifecycle of the software in use. The platform does not meet Microsoft's requirements for an official upgrade to Windows 11, while Windows 10 has reached the end of its support lifecycle.
 
-Esta situación convierte la obsolescencia del sistema operativo en el principal factor de riesgo, a pesar de que el hardware continúa siendo plenamente utilizable.
+This makes operating system obsolescence the primary risk factor, even though the hardware remains fully usable.
 
-#### Configuración principal
+#### Main Configuration
 
 - CPU: Intel Core i5-3330
-- Placa base: Gigabyte GA-Z77-DS3H
-- Memoria RAM: 16 GB DDR3-1333
-- Tarjeta gráfica: NVIDIA GeForce GT 630 2 GB
-- Fuente de alimentación: Zalman ZM700-GT
-- Disipador: Zalman CNPS9900A LED
-- Chasis: Zalman Z9
+- Motherboard: Gigabyte GA-Z77-DS3H
+- RAM: 16 GB DDR3-1333
+- Graphics card: NVIDIA GeForce GT 630 2 GB
+- Power supply: Zalman ZM700-GT
+- CPU cooler: Zalman CNPS9900A LED
+- Case: Zalman Z9
 
-#### Evaluación
+#### Assessment
 
-A pesar de su antigüedad, la plataforma continúa ofreciendo recursos suficientes para:
+Despite its age, the platform continues to provide sufficient resources for:
 
-- Ubuntu 26.04 LTS como sistema anfitrión.
-- Virtualización de Windows 10 mediante VirtualBox.
-- Ejecución de aplicaciones de diseño gráfico.
-- Uso simultáneo de herramientas de productividad y navegación.
+- Ubuntu 26.04 LTS as the host operating system.
+- Windows 10 virtualization using VirtualBox.
+- Running graphic design applications.
+- Simultaneous use of productivity tools and a web browser.
 
-El análisis preliminar indica que no existe una necesidad inmediata de sustitución del hardware y que la migración tecnológica puede realizarse aprovechando la infraestructura actual.
+The preliminary assessment indicates that there is no immediate need to replace the hardware and that the technology migration can be carried out using the existing infrastructure.
 
-La estrategia propuesta busca extender la vida útil operativa de la plataforma al menos una década adicional mediante virtualización, actualización del sistema anfitrión y reducción progresiva de dependencias de software propietario y sin soporte.
+The proposed strategy aims to extend the platform's operational life by at least another decade through virtualization, an upgrade of the host operating system, and a gradual reduction in reliance on proprietary and unsupported software.
 
-Considerando el estado actual del hardware y las necesidades reales del usuario, no se identifican limitaciones técnicas que obliguen a una sustitución inmediata de la plataforma.
+Considering the current state of the hardware and the user's actual needs, no technical limitations have been identified that would require immediate replacement of the platform.
 
-![Torre del equipo principal](./images/implementation/Captura%20desde%202026-10-13%2012-36-44.png)
+![Main computer tower](./images/implementation/Captura%20desde%202026-10-13%2012-36-44.png)
 
-![Torre del equipo principal](./images/implementation/Captura%20desde%202026-10-13%2012-36-06.png)
+![Main computer tower](./images/implementation/Captura%20desde%202026-10-13%2012-36-06.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212016.png)
+![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212016.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212037.png)
+![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212037.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212058.png)
+![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212058.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212121.png)
+![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212121.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212146.png)
+![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212146.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212224.png)
+![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212224.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212532.png)
+![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212532.png)
 
-![Componentes del equipo y precios de compra](./images/implementation/Captura%20desde%202026-10-13%2018-23-22.png)
+![Computer components and purchase prices](./images/implementation/Captura%20desde%202026-10-13%2018-23-22.png)
 
-### Almacenamiento actual
+### Current Storage
 
-- Disco 1: 1 TB (actual sistema Windows 10)
-- Disco 2: 1 TB
+- Disk 1: 1 TB (current Windows 10 system)
+- Disk 2: 1 TB
 
-![Administración de discos de Windows mostrando las particiones](./images/implementation/Captura%20de%20pantalla%202026-10-06%20214011.png)
+![Windows Disk Management showing the partitions](./images/implementation/Captura%20de%20pantalla%202026-10-06%20214011.png)
 
-### Componentes previstos para la migración
+### Components Planned for the Migration
 
-Se reutilizarán componentes procedentes de otros equipos para extender la vida útil de la plataforma actual y mejorar su rendimiento durante la transición.
+Components from other computers will be reused to extend the service life of the current platform and improve its performance during the transition.
 
-Componentes a incorporar:
+Components to be added:
 
-- SSD recuperado para alojar la máquina virtual de Windows 10.
-![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-37-38.png)
+- Reclaimed SSD to host the Windows 10 virtual machine.
+![OCZ Agility 3 2.5-inch SSD](./images/implementation/Captura%20desde%202026-10-13%2012-37-38.png)
 
-![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-37-03.png)
+![OCZ Agility 3 2.5-inch SSD](./images/implementation/Captura%20desde%202026-10-13%2012-37-03.png)
 
-- Tarjeta de red Wi-Fi interna para proporcionar conectividad al sistema anfitrión Ubuntu.
+- Internal Wi-Fi network card to provide connectivity to the Ubuntu host system.
 
-![Adaptador Wi-Fi PCI TP-Link TL-WN951N de 300 Mbps](./images/implementation/Captura%20desde%202026-10-13%2012-38-08.png)
+![TP-Link TL-WN951N 300 Mbps PCI Wi-Fi adapter](./images/implementation/Captura%20desde%202026-10-13%2012-38-08.png)
 
-
----
-
-## Situación Actual
-
-### Sistema Operativo
-
-El equipo utiliza actualmente Windows 10 como sistema operativo principal.
-
-![Acerca de Windows 10 Home, versión 22H2](./images/implementation/Captura%20de%20pantalla%202026-10-06%20213052.png)
-
-### Riesgos identificados
-
-- Dependencia de un sistema operativo sin soporte.
-- Exposición a vulnerabilidades sin posibilidad de recibir actualizaciones de seguridad futuras.
-- Dependencia de aplicaciones legacy para el desarrollo de la actividad profesional.
-- Dependencia de periféricos con compatibilidad limitada fuera del entorno Windows.
-
-### Limitaciones
-
-La sustitución completa del entorno Windows no es viable actualmente debido a la dependencia de Adobe Photoshop, Adobe Illustrator, Adobe InDesign y del ecosistema de periféricos utilizado en el taller.
 
 ---
-## Evaluación de Compatibilidad de Periféricos
 
-La viabilidad del proyecto depende en gran medida de la compatibilidad de los dispositivos utilizados diariamente por el usuario.
+## Current Situation
 
-Antes de iniciar la migración se ha realizado una evaluación preliminar de los periféricos críticos y de su integración prevista en la arquitectura objetivo.
+### Operating System
+
+The computer currently uses Windows 10 as its primary operating system.
+
+![About Windows 10 Home, version 22H2](./images/implementation/Captura%20de%20pantalla%202026-10-06%20213052.png)
+
+### Identified Risks
+
+- Reliance on an unsupported operating system.
+- Exposure to vulnerabilities without the possibility of receiving future security updates.
+- Reliance on legacy applications for professional work.
+- Reliance on peripherals with limited compatibility outside the Windows environment.
+
+### Limitations
+
+Completely replacing the Windows environment is not currently feasible because of the reliance on Adobe Photoshop, Adobe Illustrator, Adobe InDesign, and the workshop's peripheral ecosystem.
+
+---
+## Peripheral Compatibility Assessment
+
+The viability of the project depends largely on the compatibility of the devices used daily by the user.
+
+A preliminary assessment of the critical peripherals and their planned integration into the target architecture was carried out before beginning the migration.
 
 ### Wacom CTL-460
 
-**Uso:**
+**Use:**
 
-- Diseño gráfico.
-- Ilustración.
-- Edición mediante tableta gráfica.
+- Graphic design.
+- Illustration.
+- Editing with a graphics tablet.
 
-**Estrategia prevista:**
+**Planned Strategy:**
 
-- Compatibilidad nativa en Ubuntu mediante los controladores incluidos en Linux.
-- Uso directo desde aplicaciones como GIMP e Inkscape.
-- Utilización dentro de Windows 10 mediante USB Passthrough desde VirtualBox cuando sea necesario.
+- Native compatibility in Ubuntu using the drivers included in Linux.
+- Direct use with applications such as GIMP and Inkscape.
+- Use in Windows 10 through USB passthrough from VirtualBox when necessary.
 
-**Objetivo:**
+**Objective:**
 
-Mantener la funcionalidad de la tableta gráfica tanto en el entorno Linux como en el entorno Windows durante el periodo de transición.
+Maintain the graphics tablet's functionality in both the Linux and Windows environments during the transition period.
 
-**Nivel de riesgo estimado:** Bajo
+**Estimated Risk Level:** Low
 
 
 ### Canon MF3010
 
-**Uso:**
+**Use:**
 
-- Escaneo de documentos.
-- Digitalización de material gráfico.
+- Document scanning.
+- Digitization of graphic material.
 
-**Estrategia prevista:**
+**Planned Strategy:**
 
-- Evaluar la compatibilidad nativa con Ubuntu.
-- Validar tanto las funciones de impresión como las de escaneo.
-- En caso necesario, utilizar USB Passthrough hacia Windows 10 Virtualizado para garantizar la continuidad operativa.
+- Evaluate native compatibility with Ubuntu.
+- Validate both printing and scanning functions.
+- If necessary, use USB passthrough to the Windows 10 virtual machine to ensure operational continuity.
 
-**Objetivo:**
+**Objective:**
 
-Utilizar la Canon MF3010 directamente desde Ubuntu siempre que sea posible, reduciendo la dependencia del entorno Windows.
+Use the Canon MF3010 directly from Ubuntu whenever possible, reducing reliance on the Windows environment.
 
-USB Passthrough se mantendrá como mecanismo de compatibilidad y contingencia.
+USB passthrough will be retained as a compatibility and contingency mechanism.
 
-**Observaciones:**
+**Notes:**
 
-La compatibilidad con Linux no está garantizada para todas las funciones del dispositivo, especialmente las relacionadas con el escáner, por lo que deberán realizarse pruebas específicas durante la fase de implementación.
+Linux compatibility is not guaranteed for all device functions, especially those related to the scanner, so specific tests will need to be carried out during the implementation phase.
 
-**Nivel de riesgo estimado:** Medio
+**Estimated Risk Level:** Medium
 
 
 ### HP LaserJet 5000N
 
-**Uso:**
+**Use:**
 
-- Impresión de documentos.
-- Impresión de trabajos gráficos.
+- Document printing.
+- Printing graphic design work.
 
-**Estrategia prevista:**
+**Planned Strategy:**
 
-- Integración directa con Ubuntu.
-- Recepción de documentos mediante carpeta compartida desde la máquina virtual.
-- Gestión de impresión desde el sistema anfitrión.
+- Direct integration with Ubuntu.
+- Receive documents through a shared folder from the virtual machine.
+- Manage printing from the host system.
 
-**Objetivo:**
+**Objective:**
 
-Gestionar toda la impresión desde Ubuntu para reducir la dependencia de Windows y simplificar el flujo de trabajo diario.
+Manage all printing from Ubuntu to reduce reliance on Windows and simplify the daily workflow.
 
-**Nivel de riesgo estimado:** Bajo
+**Estimated Risk Level:** Low
 
 
-### Resultado Esperado
+### Expected Outcome
 
 ```text
 Ubuntu
@@ -235,7 +235,7 @@ Ubuntu
 ├── Wacom CTL-460
 ├── GIMP
 ├── Inkscape
-└── Navegación y tareas sensibles
+└── Browsing and sensitive tasks
 
 Windows 10 VM
 ├── Photoshop
@@ -243,102 +243,102 @@ Windows 10 VM
 └── InDesign
 ```
 
-La Wacom deberá funcionar tanto en Ubuntu como en Windows 10 virtualizado, permitiendo utilizar la tableta gráfica con aplicaciones nativas de Linux (GIMP e Inkscape) y con las aplicaciones Adobe que permanezcan dentro de la máquina virtual durante el periodo de transición.
+The Wacom tablet must work in both Ubuntu and virtualized Windows 10, allowing it to be used with native Linux applications (GIMP and Inkscape) as well as with the Adobe applications that remain in the virtual machine during the transition period.
 
-El objetivo es que la mayor cantidad posible de hardware funcione directamente desde Ubuntu, reservando la máquina virtual únicamente para las aplicaciones Adobe que todavía resulten necesarias durante la transición.
+The objective is for as much hardware as possible to work directly from Ubuntu, reserving the virtual machine solely for the Adobe applications that are still needed during the transition.
 
-## Problema Detectado Durante la Planificación
+## Issue Identified During Planning
 
-Como parte de la estrategia de migración se prevé crear una imagen completa del sistema Windows 10 mediante Macrium Reflect para posteriormente restaurarla dentro de una máquina virtual.
+As part of the migration strategy, a full image of the Windows 10 system will be created using Macrium Reflect and later restored inside a virtual machine.
 
-Durante la revisión inicial se detectó una limitación importante:
+An important limitation was identified during the initial review:
 
 ```text
-El tamaño actual de la instalación de Windows es superior a la capacidad disponible en el SSD recuperado.
+The current Windows installation is larger than the available capacity of the reclaimed SSD.
 ```
 
-Esta situación impide restaurar directamente la imagen completa dentro del SSD destinado a alojar la futura máquina virtual.
+This prevents the full image from being restored directly to the SSD intended to host the future virtual machine.
 
 
 ---
 
-## Acción Correctiva Planificada
+## Planned Corrective Action
 
-Antes de generar la imagen definitiva del sistema será necesario reducir el espacio ocupado por Windows.
+Before generating the final system image, the space occupied by Windows must be reduced.
 
-### Estrategia
+### Strategy
 
-1. Identificar archivos no críticos almacenados en la unidad principal.
-2. Mover documentos históricos y datos de gran tamaño al disco de 1 TB destinado a almacenamiento.
-3. Mantener únicamente sistema operativo, aplicaciones y datos de trabajo necesarios para la operativa diaria.
-4. Verificar el nuevo tamaño de la instalación.
-5. Crear la imagen definitiva del sistema mediante Macrium Reflect.
+1. Identify non-critical files stored on the primary drive.
+2. Move historical documents and large data files to the 1 TB storage drive.
+3. Keep only the operating system, applications, and work data needed for daily operations.
+4. Verify the new installation size.
+5. Create the final system image using Macrium Reflect.
 
-### Resultado Esperado
+### Expected Outcome
 
 ```text
-Windows 10 reducido a un tamaño compatible con el SSD disponible.
+Windows 10 reduced to a size compatible with the available SSD.
 ```
 
-Esto permitirá:
+This will:
 
-- Generar una imagen más pequeña.
-- Reducir tiempos de copia y restauración.
-- Mejorar el rendimiento de la futura máquina virtual.
-- Simplificar las tareas de mantenimiento y respaldo.
+- Produce a smaller image.
+- Reduce copy and restoration times.
+- Improve the performance of the future virtual machine.
+- Simplify maintenance and backup tasks.
 
 
 ---
 
-## Estrategia de Transición Tecnológica
+## Technology Transition Strategy
 
-Además de mejorar la seguridad del entorno, el proyecto persigue reducir progresivamente la dependencia de software y servicios propietarios que condicionan la continuidad operativa del usuario.
+In addition to improving the environment's security, the project aims to gradually reduce reliance on proprietary software and services that affect the user's operational continuity.
 
-La estrategia adoptada no busca reemplazar el flujo de trabajo actual de forma inmediata, sino facilitar una transición gradual hacia alternativas modernas y sostenibles.
+The adopted strategy does not seek to replace the current workflow immediately, but rather to facilitate a gradual transition to modern, sustainable alternatives.
 
-### Objetivos
+### Objectives
 
-- Mantener la productividad actual sin interrupciones.
-- Reducir la dependencia de Windows 10.
-- Reducir progresivamente la dependencia del ecosistema Adobe.
-- Introducir herramientas compatibles con Linux.
-- Facilitar el aprendizaje progresivo de nuevas aplicaciones.
-- Evitar cambios bruscos para un usuario no técnico.
+- Maintain current productivity without interruption.
+- Reduce reliance on Windows 10.
+- Gradually reduce reliance on the Adobe ecosystem.
+- Introduce Linux-compatible tools.
+- Support the gradual learning of new applications.
+- Avoid abrupt changes for a non-technical user.
 
-### GIMP como alternativa a Photoshop
+### GIMP as an Alternative to Photoshop
 
-Aunque Photoshop continuará disponible dentro de la máquina virtual de Windows 10, se instalará GIMP en Ubuntu para favorecer una migración gradual hacia una herramienta nativa del sistema anfitrión.
+Although Photoshop will remain available in the Windows 10 virtual machine, GIMP will be installed in Ubuntu to support a gradual migration to a tool native to the host operating system.
 
-La coexistencia de ambas aplicaciones permitirá:
+Having both applications available will allow the user to:
 
-- Comparar flujos de trabajo.
-- Reducir la dependencia de Photoshop.
-- Identificar tareas que puedan realizarse completamente desde Linux.
-- Mejorar la autonomía tecnológica del usuario.
+- Compare workflows.
+- Reduce reliance on Photoshop.
+- Identify tasks that can be completed entirely in Linux.
+- Improve the user's technological independence.
 
-### Inkscape como alternativa a Illustrator
+### Inkscape as an Alternative to Illustrator
 
-Además de Photoshop el usuario utilizaba Adobe Illustrator, como herramienta de diseño vectorial como parte de su flujo de trabajo habitual dentro del taller. Sin embargo se detecta que el software no funciona en las validaciones previas
+In addition to Photoshop, the user used Adobe Illustrator as a vector design tool in the workshop's regular workflow. However, during preliminary validation, the software was found not to work.
 
-Con el objetivo de reducir la dependencia de software propietario y facilitar una futura migración completa hacia Linux, se evaluará el uso de Inkscape como alternativa libre para trabajos de ilustración y diseño vectorial.
+To reduce reliance on proprietary software and facilitate a future full migration to Linux, Inkscape will be evaluated as a free alternative for illustration and vector design work.
 
-La coexistencia inicial de Illustrator e Inkscape permitirá:
+Initially having both Illustrator and Inkscape available will allow the user to:
 
-- Comparar flujos de trabajo.
-- Reducir progresivamente la dependencia de Illustrator.
-- Mantener compatibilidad con formatos vectoriales estándar.
-- Favorecer la adopción de herramientas nativas en Ubuntu.
-- Mejorar la autonomía tecnológica del usuario.
+- Compare workflows.
+- Gradually reduce reliance on Illustrator.
+- Maintain compatibility with standard vector formats.
+- Encourage the adoption of tools native to Ubuntu.
+- Improve the user's technological independence.
 
-### Scribus como alternativa a InDesign
+### Scribus as an Alternative to InDesign
 
-Adobe InDesign CS4 también formaba parte del flujo de trabajo del usuario, pero durante las validaciones se comprobó que la licencia aparece caducada y que la aplicación no arranca. Por este motivo, se evaluará Scribus como alternativa libre para tareas de maquetación y autoedición en Ubuntu, verificando su adecuación al flujo de trabajo y la compatibilidad de los documentos existentes.
+Adobe InDesign CS4 was also part of the user's workflow, but validation showed that its license appears to have expired and the application does not start. For this reason, Scribus will be evaluated as a free alternative for page layout and desktop publishing in Ubuntu, verifying its suitability for the workflow and compatibility with existing documents.
 
-### Estrategia de adopción
+### Adoption Strategy
 
-La transición no será inmediata.
+The transition will not be immediate.
 
-Durante una fase inicial convivirán:
+During an initial phase, the following applications will coexist:
 
 ```text
 Photoshop → GIMP
@@ -346,224 +346,224 @@ Illustrator → Inkscape
 InDesign → Scribus
 ```
 
-Esto permitirá al usuario familiarizarse con las nuevas herramientas sin afectar a la productividad diaria del negocio.
+This will allow the user to become familiar with the new tools without affecting the business's daily productivity.
 
 
-### Asistencia mediante Inteligencia Artificial
+### Assistance Using Artificial Intelligence
 
-Se creará una cuenta de Proton para el usuario con acceso a las herramientas disponibles dentro del ecosistema Proton.
+A Proton account will be created for the user, providing access to the tools available in the Proton ecosystem.
 
-Como apoyo al proceso de aprendizaje se utilizará Lumo como asistente para:
+Lumo will be used to support the learning process and help with:
 
-- Resolver dudas sobre Ubuntu.
-- Aprender funciones equivalentes entre Photoshop y GIMP.
-- Aprender funciones equivalentes entre Illustrator e Inkscape.
-- Aprender funciones equivalentes entre InDesign y Scribus.
-- Guiar tareas básicas de configuración y administración.
-- Reducir la curva de aprendizaje durante la transición.
+- Answering questions about Ubuntu.
+- Learning equivalent features in Photoshop and GIMP.
+- Learning equivalent features in Illustrator and Inkscape.
+- Learning equivalent features in InDesign and Scribus.
+- Guiding basic configuration and administration tasks.
+- Reducing the learning curve during the transition.
 
-### Resultado Esperado
+### Expected Outcome
 
-#### Corto plazo
+#### Short Term
 
-- Photoshop continúa funcionando dentro de la máquina virtual.
-- Illustrator se sustituirá por Inkscape.
-- InDesign se sustituirá por Scribus.
-- El flujo de trabajo actual permanece operativo.
-- No existe impacto significativo sobre la productividad.
+- Photoshop continues to run in the virtual machine.
+- Illustrator is replaced by Inkscape.
+- InDesign is replaced by Scribus.
+- The current workflow remains operational.
+- There is no significant impact on productivity.
 
-#### Medio plazo
+#### Medium Term
 
-- El usuario trabaja habitualmente con GIMP para tareas de edición de imagen.
-- El usuario trabaja habitualmente con Inkscape para tareas de diseño vectorial.
-- El usuario trabaja habitualmente con Scribus para tareas de maquetación y autoedición.
-- El usuario utiliza Ubuntu con autonomía en sus tareas habituales.
-- Se reduce progresivamente la dependencia diaria de Windows.
+- The user regularly works with GIMP for image editing.
+- The user regularly works with Inkscape for vector design.
+- The user regularly works with Scribus for page layout and desktop publishing.
+- The user uses Ubuntu independently for routine tasks.
+- Daily reliance on Windows is gradually reduced.
 
-#### Largo plazo
+#### Long Term
 
-- El usuario puede desempeñar gran parte de su actividad profesional desde Linux utilizando GIMP, Inkscape y Scribus como alternativas principales a Photoshop, Illustrator e InDesign.
-- La dependencia de Windows 10 se reduce al mínimo o desaparece.
-- Se elimina la necesidad de mantener software sin soporte como requisito operativo.
+- The user can perform much of their professional work in Linux, using GIMP, Inkscape, and Scribus as the primary alternatives to Photoshop, Illustrator, and InDesign.
+- Reliance on Windows 10 is minimized or eliminated.
+- The need to maintain unsupported software as an operational requirement is eliminated.
 
 
 ---
 
-## Alternativas Evaluadas
+## Alternatives Evaluated
 
-### Sustitución completa del hardware
+### Complete Hardware Replacement
 
-**Resultado:** Descartada.
+**Outcome:** Rejected.
 
-**Motivo:**
+**Reason:**
 
-- Incremento de costes.
-- El hardware actual continúa siendo funcional para las necesidades del usuario.
+- Increased costs.
+- The current hardware remains functional for the user's needs.
 
-### Migración completa a Linux
+### Full Migration to Linux
 
-**Resultado:** Descartada.
+**Outcome:** Rejected.
 
-**Motivo:**
+**Reason:**
 
-- Dependencia directa de Photoshop e Illustrator.
-- Posibles problemas de compatibilidad con periféricos específicos.
+- Direct reliance on Photoshop and Illustrator.
+- Possible compatibility issues with specific peripherals.
 
 ### Dual Boot
 
-**Resultado:** Descartada.
+**Outcome:** Rejected.
 
-**Motivo:**
+**Reason:**
 
-- Windows seguiría ejecutándose directamente sobre hardware físico.
-- No elimina los riesgos asociados a un sistema operativo legacy.
+- Windows would continue to run directly on physical hardware.
+- It does not eliminate the risks associated with a legacy operating system.
 
-### Virtualización con aislamiento
+### Isolated Virtualization
 
-**Resultado:** Seleccionada.
+**Outcome:** Selected.
 
-**Motivo:**
+**Reason:**
 
-- Mantiene la funcionalidad requerida.
-- Permite aislar completamente Windows 10.
-- Reduce significativamente la superficie de ataque.
-- Facilita copias de seguridad y recuperación mediante instantáneas.
+- Maintains the required functionality.
+- Allows Windows 10 to be fully isolated.
+- Significantly reduces the attack surface.
+- Simplifies backup and recovery using snapshots.
 
 ---
 
-## Arquitectura Objetivo
+## Target Architecture
 
-La solución prevista consiste en separar las funciones críticas del sistema mediante virtualización y segmentación del almacenamiento.
+The proposed solution is to separate the system's critical functions through virtualization and storage segmentation.
 
-### Distribución de discos
+### Disk Layout
 
 ```text
-Disco 1 TB (actual sistema)
+1 TB disk (current system)
 └── Ubuntu 26.04 LTS (Host)
 
-SSD recuperado
-└── Windows 10 Virtualizado (VirtualBox)
+Reclaimed SSD
+└── Virtualized Windows 10 (VirtualBox)
 
-Disco 1 TB (ALMACÉN)
-├── Datos históricos
-├── Copias de seguridad
-├── Archivos de trabajo
-└── Carpeta compartida Host ↔ VM
+1 TB disk (STORAGE)
+├── Historical data
+├── Backups
+├── Work files
+└── Shared folder Host ↔ VM
 ```
 
 
-### Ubuntu 26.04 LTS (host)
+### Ubuntu 26.04 LTS (Host)
 
-Instalado sobre el disco principal actualmente utilizado por Windows.
+Installed on the primary disk currently used by Windows.
 
-**Responsabilidades:**
+**Responsibilities:**
 
-- Navegación web.
-- Correo electrónico.
-- Banca electrónica.
-- Trámites administrativos.
+- Web browsing.
+- Email.
+- Online banking.
+- Administrative procedures.
 - Multimedia.
-- Impresión.
-- Aprendizaje progresivo con GIMP.
-- Aprendizaje progresivo con Inkscape.
-- Uso de herramientas de asistencia basadas en IA.
+- Printing.
+- Gradual learning and use of GIMP.
+- Gradual learning and use of Inkscape.
+- Use of AI-based assistance tools.
 
-### Windows 10 Virtualizado
+### Virtualized Windows 10
 
-Instalado dentro de VirtualBox sobre el SSD recuperado.
+Installed in VirtualBox on the reclaimed SSD.
 
-**Responsabilidades:**
+**Responsibilities:**
 
 - Adobe Photoshop.
 - Adobe Illustrator.
-- Escaneo mediante Canon MF3010.
-- Uso de la Wacom CTL-460.
-- Trabajo gráfico profesional.
+- Scanning with the Canon MF3010.
+- Use of the Wacom CTL-460.
+- Professional graphic design work.
 
-### Disco ALMACÉN
+### STORAGE Disk
 
-**Funciones:**
+**Functions:**
 
-- Almacenamiento de archivos históricos.
-- Copias de seguridad.
-- Intercambio de información entre Ubuntu y la máquina virtual.
-- Ubicación de la carpeta compartida utilizada por el usuario.
+- Storage for historical files.
+- Backups.
+- Information sharing between Ubuntu and the virtual machine.
+- Location of the shared folder used by the user.
 
-### Principio de seguridad
+### Security Principle
 
 ```text
-Windows 10 permanecerá aislado de Internet.
+Windows 10 will remain isolated from the Internet.
 ```
 
-Todo el acceso a red se realizará desde Ubuntu, reduciendo drásticamente la exposición del sistema legacy.
+All network access will take place from Ubuntu, drastically reducing the exposure of the legacy system.
 
 ---
 
-## Próximos Pasos
+## Next Steps
 
-1. Instalación del SSD recuperado.
-2. Instalación de la tarjeta Wi-Fi interna.
-3. Inventario de datos almacenados.
-4. Limpieza y reorganización de archivos.
-5. Creación de la imagen del sistema con Macrium Reflect.
-6. Instalación de Ubuntu 26.04 LTS.
-7. Instalación de GIMP e Inkscape y configuración inicial.
-8. Creación de cuenta Proton para el usuario.
-9. Implementación de VirtualBox.
-10. Restauración de Windows 10 en entorno virtualizado.
-11. Configuración del disco ALMACÉN como almacenamiento compartido.
-12. Validación de periféricos y software crítico.
-13. Aplicación de medidas de hardening sobre el sistema anfitrión.
+1. Install the reclaimed SSD.
+2. Install the internal Wi-Fi card.
+3. Inventory the stored data.
+4. Clean up and reorganize files.
+5. Create a system image using Macrium Reflect.
+6. Install Ubuntu 26.04 LTS.
+7. Install GIMP and Inkscape and perform the initial configuration.
+8. Create a Proton account for the user.
+9. Set up VirtualBox.
+10. Restore Windows 10 in a virtualized environment.
+11. Configure the STORAGE disk as shared storage.
+12. Validate the critical peripherals and software.
+13. Apply hardening measures to the host system.
 
 
 ---
 
-## Evaluación de Riesgos y Controles
+## Risk and Control Assessment
 
-La solución propuesta no solo responde a una necesidad de continuidad operativa, sino que también reduce significativamente la superficie de ataque del entorno. La siguiente evaluación complementa el análisis inicial con una visión más orientada a seguridad y a la presentación del caso como proyecto profesional.
+The proposed solution addresses not only the need for operational continuity but also significantly reduces the environment's attack surface. The following assessment complements the initial analysis with a greater focus on security and on presenting the case as a professional project.
 
-### Matriz de riesgos
+### Risk Matrix
 
-| Riesgo | Impacto | Probabilidad | Descripción | Tratamiento propuesto |
+| Risk | Impact | Likelihood | Description | Proposed Mitigation |
 | --- | --- | --- | --- | --- |
-| Windows 10 sin soporte | Alto | Alto | El sistema operativo principal no recibe parches ni actualizaciones de seguridad, incrementando la exposición a malware y vulnerabilidades conocidas. | Aislar la VM de Windows 10, limitar el acceso a Internet y mantenerla solo para software crítico. |
-| Dependencia de software legacy | Alto | Alto | Adobe Photoshop e Illustrator siguen siendo herramientas críticas para la operación del taller, pero dependen de un entorno antiguo y menos seguro. | Mantener esas aplicaciones dentro de una máquina virtual aislada y reducir la dependencia progresiva hacia Linux. |
-| Exposición de host a Internet | Alto | Medio | Un sistema operativo moderno expuesto directamente a la red representa un punto de entrada más seguro para navegación y correo, pero debe configurarse con controles estrictos. | Realizar el acceso a Internet únicamente desde Ubuntu con hardening del host y restricciones de red. |
-| Intercambio de archivos entre host y VM | Medio | Medio | La transferencia de documentos entre sistemas puede exponer datos sensibles si la carpeta compartida no está restringida o monitorizada. | Separar almacenamiento, definir permisos mínimos y mantener la carpeta compartida únicamente para trabajo designado. |
-| Periféricos con compatibilidad limitada | Medio | Medio | Dispositivos como el escáner Canon MF3010 pueden presentar problemas de soporte en Linux y requerir contingencias. | Probar compatibilidad nativa, mantener USB Passthrough como alternativa y documentar el flujo de recuperación. |
-| Pérdida de información crítica | Alto | Medio | El usuario trabaja con archivos de diseño y documentación profesional; una pérdida de datos puede afectar la continuidad del negocio. | Realizar copias de seguridad periódicas, separar almacenamiento y mantener instantáneas del entorno virtual. |
+| Unsupported Windows 10 | High | High | The primary operating system receives no patches or security updates, increasing exposure to malware and known vulnerabilities. | Isolate the Windows 10 VM, limit Internet access, and use it only for critical software. |
+| Reliance on legacy software | High | High | Adobe Photoshop and Illustrator remain critical tools for the workshop's operations, but depend on an old and less secure environment. | Keep these applications in an isolated virtual machine and gradually reduce reliance on them in favor of Linux. |
+| Host exposure to the Internet | High | Medium | A modern operating system directly exposed to the network provides a safer entry point for browsing and email, but must be configured with strict controls. | Access the Internet only from Ubuntu, with host hardening and network restrictions in place. |
+| File sharing between host and VM | Medium | Medium | Transferring documents between systems can expose sensitive data if the shared folder is not restricted or monitored. | Separate storage, define least-privilege permissions, and keep the shared folder limited to designated work. |
+| Peripherals with limited compatibility | Medium | Medium | Devices such as the Canon MF3010 scanner may have Linux support issues and require contingency measures. | Test native compatibility, retain USB passthrough as an alternative, and document the recovery workflow. |
+| Loss of critical information | High | Medium | The user works with design files and professional documentation; data loss could affect business continuity. | Perform regular backups, separate storage, and maintain snapshots of the virtual environment. |
 
-### Activos críticos
+### Critical Assets
 
-- Ubuntu 26.04 LTS como sistema anfitrión y punto de acceso seguro a la red.
-- Windows 10 virtualizado como entorno de software legacy y de uso limitado.
-- Datos de diseño gráfico y documentación del taller.
-- Wacom CTL-460, Canon MF3010 y HP LaserJet 5000N.
-- Estrategia de copia de seguridad y recuperación ante fallos.
+- Ubuntu 26.04 LTS as the host operating system and secure network access point.
+- Virtualized Windows 10 as a limited-use environment for legacy software.
+- Graphic design data and workshop documentation.
+- Wacom CTL-460, Canon MF3010, and HP LaserJet 5000N.
+- Backup and disaster recovery strategy.
 
-### Controles clave propuestos
+### Key Proposed Controls
 
-- Aislamiento de la máquina virtual de Windows 10 del acceso directo a Internet.
-- Uso de Ubuntu como único entorno para navegación, correo, banca y tareas no críticas.
-- Segmentación del almacenamiento entre sistema, datos y copia de seguridad.
-- Mantenimiento de una carpeta compartida controlada para intercambio de archivos entre host y VM.
-- Reducción progresiva de dependencias de software propietario mediante GIMP e Inkscape.
-- Hardening del sistema anfitrión, incluyendo gestión de usuarios, permisos y control de red.
-- Verificación de compatibilidad de periféricos antes de la migración completa.
-- Copias de seguridad y pruebas de restauración de la máquina virtual.
+- Isolate the Windows 10 virtual machine from direct Internet access.
+- Use Ubuntu as the sole environment for browsing, email, banking, and non-critical tasks.
+- Segment storage for the system, data, and backups.
+- Maintain a controlled shared folder for file exchange between the host and VM.
+- Gradually reduce reliance on proprietary software through the use of GIMP and Inkscape.
+- Harden the host system, including user management, permissions, and network controls.
+- Verify peripheral compatibility before the full migration.
+- Back up the virtual machine and test its restoration.
 
 
 ---
 
-## Conclusión
+## Conclusion
 
-El análisis inicial confirma que el hardware actual continúa siendo válido para la actividad profesional del usuario. Sin embargo, la dependencia de Windows 10 y de aplicaciones legacy requiere una estrategia de aislamiento que permita mantener la operativa sin asumir los riesgos asociados al uso de un sistema operativo sin soporte.
-
-
-La solución propuesta no se limita al aislamiento de un sistema legacy. También establece las bases para una transición tecnológica progresiva que permita reducir la dependencia de software sin soporte, fomentar el uso de herramientas abiertas como GIMP e Inkscape, y facilitar la adopción de nuevas tecnologías mediante asistencia guiada y aprendizaje continuo.
+The initial assessment confirms that the current hardware remains suitable for the user's professional work. However, reliance on Windows 10 and legacy applications requires an isolation strategy that maintains operations without incurring the risks associated with using an unsupported operating system.
 
 
-El objetivo final es prolongar la vida útil de la plataforma durante al menos una década adicional, preservando la continuidad operativa del negocio y maximizando el aprovechamiento de una infraestructura que, a pesar de su antigüedad, continúa siendo técnicamente válida para las necesidades actuales.
+The proposed solution is not limited to isolating a legacy system. It also lays the groundwork for a gradual technology transition that reduces reliance on unsupported software, encourages the use of open tools such as GIMP and Inkscape, and facilitates the adoption of new technologies through guided assistance and continuous learning.
 
 
-La adopción progresiva de soluciones basadas en software libre también contribuirá a reducir la dependencia de licencias propietarias y servicios de suscripción, mejorando la sostenibilidad económica del entorno de trabajo a largo plazo.
+The ultimate goal is to extend the platform's service life by at least another decade, preserving business continuity and maximizing the use of infrastructure that, despite its age, remains technically suitable for current needs.
+
+
+The gradual adoption of free software solutions will also help reduce reliance on proprietary licenses and subscription services, improving the long-term economic sustainability of the work environment.
