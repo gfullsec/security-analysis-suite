@@ -124,7 +124,7 @@ Componentes a incorporar:
 - SSD recuperado para alojar la máquina virtual de Windows 10.
 ![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-37-38.png)
 
-![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-38-08.png)
+![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-37-03.png)
 
 - Tarjeta de red Wi-Fi interna para proporcionar conectividad al sistema anfitrión Ubuntu.
 
