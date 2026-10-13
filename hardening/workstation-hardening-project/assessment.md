@@ -27,8 +27,17 @@ Adicionalmente, esta estrategia permite reducir la dependencia de nuevas adquisi
 ### Hardware crítico
 
 - Tableta gráfica Wacom CTL-460
-- Escáner Canon MF3010
+![Tableta gráfica Wacom Bamboo CTL-460](./images/implementation/Captura%20desde%202026-10-13%2012-56-31.png)
+
+![Tableta gráfica Wacom Bamboo CTL-460](./images/implementation/Captura%20desde%202026-10-13%2013-00-03.png)
+
+- Impresora - Escáner Canon MF3010
+> [!TODO]
+> Añadir fotografía de la Canon MF3010.
+
 - Impresora HP LaserJet 5000N
+> [!TODO]
+> Añadir fotografía de la HP LaserJet 5000N.
 
 ### Perfil de usuario
 
@@ -37,23 +46,6 @@ Adicionalmente, esta estrategia permite reducir la dependencia de nuevas adquisi
 - Necesidad de minimizar interrupciones del servicio
 - Necesidad de no ampliar los costes en renovacion de licencias o nuevas subscripciones debido a su volumen de negocio
 
-> [!TODO]
-> Añadir captura de Photoshop instalado y operativo.
-
-> [!TODO]
-> Añadir captura de Illustrator instalado y operativo.
-
-> [!TODO]
-> Añadir captura de InDesign instalado y operativo.
-
-> [!TODO]
-> Añadir fotografía de la Wacom CTL-460.
-
-> [!TODO]
-> Añadir fotografía de la Canon MF3010.
-
-> [!TODO]
-> Añadir fotografía de la HP LaserJet 5000N.
 
 ---
 
@@ -96,25 +88,32 @@ La estrategia propuesta busca extender la vida útil operativa de la plataforma 
 
 Considerando el estado actual del hardware y las necesidades reales del usuario, no se identifican limitaciones técnicas que obliguen a una sustitución inmediata de la plataforma.
 
-> [!TODO]
-> Añadir fotografía general del equipo antes de comenzar la migración.
+![Torre del equipo principal](./images/implementation/Captura%20desde%202026-10-13%2012-36-44.png)
 
-> [!TODO]
-> Añadir fotografía del interior del equipo antes de realizar modificaciones.
+![Torre del equipo principal](./images/implementation/Captura%20desde%202026-10-13%2012-36-06.png)
 
-> [!TODO]
-> Añadir captura de CPU-Z o herramienta equivalente mostrando la configuración actual del sistema.
+![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212016.png)
 
-> [!TODO]
-> Añadir captura o evidencia documental del pedido original de componentes realizado en 2012.
+![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212037.png)
+
+![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212058.png)
+
+![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212121.png)
+
+![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212146.png)
+
+![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212224.png)
+
+![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212532.png)
+
+![Componentes del equipo y precios de compra](./images/implementation/Captura%20desde%202026-10-13%2018-23-22.png)
 
 ### Almacenamiento actual
 
 - Disco 1: 1 TB (actual sistema Windows 10)
 - Disco 2: 1 TB
 
-> [!TODO]
-> Añadir captura de Administración de discos mostrando la configuración actual de almacenamiento.
+![Administración de discos de Windows mostrando las particiones](./images/implementation/Captura%20de%20pantalla%202026-10-06%20214011.png)
 
 ### Componentes previstos para la migración
 
@@ -123,13 +122,14 @@ Se reutilizarán componentes procedentes de otros equipos para extender la vida 
 Componentes a incorporar:
 
 - SSD recuperado para alojar la máquina virtual de Windows 10.
+![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-37-38.png)
+
+![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-38-08.png)
+
 - Tarjeta de red Wi-Fi interna para proporcionar conectividad al sistema anfitrión Ubuntu.
 
-> [!TODO]
-> Añadir fotografía del SSD recuperado.
+![Adaptador Wi-Fi PCI TP-Link TL-WN951N de 300 Mbps](./images/implementation/Captura%20desde%202026-10-13%2012-38-08.png)
 
-> [!TODO]
-> Añadir fotografía de la tarjeta Wi-Fi antes de la instalación.
 
 ---
 
@@ -139,8 +139,7 @@ Componentes a incorporar:
 
 El equipo utiliza actualmente Windows 10 como sistema operativo principal.
 
-> [!TODO]
-> Añadir captura de winver mostrando la versión actual de Windows 10.
+![Acerca de Windows 10 Home, versión 22H2](./images/implementation/Captura%20de%20pantalla%202026-10-06%20213052.png)
 
 ### Riesgos identificados
 
@@ -180,8 +179,6 @@ Mantener la funcionalidad de la tableta gráfica tanto en el entorno Linux como 
 
 **Nivel de riesgo estimado:** Bajo
 
-> [!TODO]
-> Añadir fotografía de la Wacom CTL-460.
 
 ### Canon MF3010
 
@@ -208,8 +205,6 @@ La compatibilidad con Linux no está garantizada para todas las funciones del di
 
 **Nivel de riesgo estimado:** Medio
 
-> [!TODO]
-> Añadir fotografía de la Canon MF3010.
 
 ### HP LaserJet 5000N
 
@@ -230,8 +225,6 @@ Gestionar toda la impresión desde Ubuntu para reducir la dependencia de Windows
 
 **Nivel de riesgo estimado:** Bajo
 
-> [!TODO]
-> Añadir fotografía de la HP LaserJet 5000N.
 
 ### Resultado Esperado
 
@@ -266,11 +259,6 @@ El tamaño actual de la instalación de Windows es superior a la capacidad dispo
 
 Esta situación impide restaurar directamente la imagen completa dentro del SSD destinado a alojar la futura máquina virtual.
 
-> [!TODO]
-> Añadir captura de las propiedades de las unidades mostrando el espacio utilizado.
-
-> [!TODO]
-> Añadir evidencia del tamaño actual de la instalación de Windows.
 
 ---
 
@@ -299,14 +287,6 @@ Esto permitirá:
 - Mejorar el rendimiento de la futura máquina virtual.
 - Simplificar las tareas de mantenimiento y respaldo.
 
-> [!TODO]
-> Recordar obtener capturas del disco "ALMACÉN" antes de la transferencia de datos durante la fase de implementación.
-
-> [!TODO]
-> Recordar obtener capturas del proceso de reorganización de archivos durante la fase de implementación.
-
-> [!TODO]
-> Recordar obtener una captura final mostrando el espacio liberado tras la reorganización de datos.
 
 ---
 
@@ -368,11 +348,6 @@ InDesign → Scribus
 
 Esto permitirá al usuario familiarizarse con las nuevas herramientas sin afectar a la productividad diaria del negocio.
 
-> [!TODO]
-> Recordar obtener capturas de Inkscape instalado y configurado durante la fase de implementación.
-
-> [!TODO]
-> Recordar documentar ejemplos prácticos de migración Illustrator → Inkscape durante la fase de validación.
 
 ### Asistencia mediante Inteligencia Artificial
 
@@ -411,20 +386,6 @@ Como apoyo al proceso de aprendizaje se utilizará Lumo como asistente para:
 - La dependencia de Windows 10 se reduce al mínimo o desaparece.
 - Se elimina la necesidad de mantener software sin soporte como requisito operativo.
 
-> [!TODO]
-> Recordar obtener capturas de GIMP instalado y configurado durante la fase de implementación.
-
-> [!TODO]
-> Recordar obtener capturas de Inkscape instalado y configurado durante la fase de implementación.
-
-> [!TODO]
-> Recordar obtener capturas de la cuenta Proton configurada para el usuario.
-
-> [!TODO]
-> Recordar documentar ejemplos prácticos de migración Photoshop → GIMP durante la fase de validación.
-
-> [!TODO]
-> Recordar documentar ejemplos prácticos de migración Illustrator → Inkscape durante la fase de validación.
 
 ---
 
@@ -490,8 +451,6 @@ Disco 1 TB (ALMACÉN)
 └── Carpeta compartida Host ↔ VM
 ```
 
-> [!TODO]
-> Añadir captura de la distribución final de discos o diagrama de almacenamiento.
 
 ### Ubuntu 26.04 LTS (host)
 
@@ -538,12 +497,6 @@ Windows 10 permanecerá aislado de Internet.
 
 Todo el acceso a red se realizará desde Ubuntu, reduciendo drásticamente la exposición del sistema legacy.
 
-> [!TODO]
-> Recordar crear e incluir el diagrama de arquitectura final.
-
-> [!TODO]
-> Recordar crear e incluir el diagrama del flujo Ubuntu → VirtualBox → Windows 10 VM.
-
 ---
 
 ## Próximos Pasos
@@ -562,8 +515,6 @@ Todo el acceso a red se realizará desde Ubuntu, reduciendo drásticamente la ex
 12. Validación de periféricos y software crítico.
 13. Aplicación de medidas de hardening sobre el sistema anfitrión.
 
-> [!TODO]
-> Recordar documentar todas las fases anteriores en implementation.md y validation.md.
 
 ---
 
