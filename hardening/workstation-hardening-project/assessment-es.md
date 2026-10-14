@@ -27,9 +27,9 @@ Adicionalmente, esta estrategia permite reducir la dependencia de nuevas adquisi
 ### Hardware crítico
 
 - Tableta gráfica Wacom CTL-460
-![Tableta gráfica Wacom Bamboo CTL-460](./images/implementation/Captura%20desde%202026-10-13%2012-56-31.png)
+![Tableta gráfica Wacom Bamboo CTL-460](./images/assessments/Captura%20desde%202026-10-13%2012-56-31.png)
 
-![Tableta gráfica Wacom Bamboo CTL-460](./images/implementation/Captura%20desde%202026-10-13%2013-00-03.png)
+![Tableta gráfica Wacom Bamboo CTL-460](./images/assessments/Captura%20desde%202026-10-13%2013-00-03.png)
 
 - Impresora - Escáner Canon MF3010
 > [!TODO]
@@ -88,32 +88,32 @@ La estrategia propuesta busca extender la vida útil operativa de la plataforma 
 
 Considerando el estado actual del hardware y las necesidades reales del usuario, no se identifican limitaciones técnicas que obliguen a una sustitución inmediata de la plataforma.
 
-![Torre del equipo principal](./images/implementation/Captura%20desde%202026-10-13%2012-36-44.png)
+![Torre del equipo principal](./images/assessments/Captura%20desde%202026-10-13%2012-36-44.png)
 
-![Torre del equipo principal](./images/implementation/Captura%20desde%202026-10-13%2012-36-06.png)
+![Torre del equipo principal](./images/assessments/Captura%20desde%202026-10-13%2012-36-06.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212016.png)
+![Información CPU-Z](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212016.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212037.png)
+![Información CPU-Z](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212037.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212058.png)
+![Información CPU-Z](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212058.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212121.png)
+![Información CPU-Z](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212121.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212146.png)
+![Información CPU-Z](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212146.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212224.png)
+![Información CPU-Z](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212224.png)
 
-![Información CPU-Z](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212532.png)
+![Información CPU-Z](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212532.png)
 
-![Componentes del equipo y precios de compra](./images/implementation/Captura%20desde%202026-10-13%2018-23-22.png)
+![Componentes del equipo y precios de compra](./images/assessments/Captura%20desde%202026-10-13%2018-23-22.png)
 
 ### Almacenamiento actual
 
 - Disco 1: 1 TB (actual sistema Windows 10)
 - Disco 2: 1 TB
 
-![Administración de discos de Windows mostrando las particiones](./images/implementation/Captura%20de%20pantalla%202026-10-06%20214011.png)
+![Administración de discos de Windows mostrando las particiones](./images/assessments/Captura%20de%20pantalla%202026-10-06%20214011.png)
 
 ### Componentes previstos para la migración
 
@@ -122,13 +122,13 @@ Se reutilizarán componentes procedentes de otros equipos para extender la vida 
 Componentes a incorporar:
 
 - SSD recuperado para alojar la máquina virtual de Windows 10.
-![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-37-38.png)
+![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/assessments/Captura%20desde%202026-10-13%2012-37-38.png)
 
-![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/implementation/Captura%20desde%202026-10-13%2012-37-03.png)
+![Unidad SSD OCZ Agility 3 de 2,5 pulgadas](./images/assessments/Captura%20desde%202026-10-13%2012-37-03.png)
 
 - Tarjeta de red Wi-Fi interna para proporcionar conectividad al sistema anfitrión Ubuntu.
 
-![Adaptador Wi-Fi PCI TP-Link TL-WN951N de 300 Mbps](./images/implementation/Captura%20desde%202026-10-13%2012-38-08.png)
+![Adaptador Wi-Fi PCI TP-Link TL-WN951N de 300 Mbps](./images/assessments/Captura%20desde%202026-10-13%2012-38-08.png)
 
 
 ---
@@ -139,7 +139,7 @@ Componentes a incorporar:
 
 El equipo utiliza actualmente Windows 10 como sistema operativo principal.
 
-![Acerca de Windows 10 Home, versión 22H2](./images/implementation/Captura%20de%20pantalla%202026-10-06%20213052.png)
+![Acerca de Windows 10 Home, versión 22H2](./images/assessments/Captura%20de%20pantalla%202026-10-06%20213052.png)
 
 ### Riesgos identificados
 

@@ -27,9 +27,9 @@ Additionally, this strategy helps reduce reliance on new proprietary software pu
 ### Critical Hardware
 
 - Wacom CTL-460 graphics tablet
-![Wacom Bamboo CTL-460 graphics tablet](./images/implementation/Captura%20desde%202026-10-13%2012-56-31.png)
+![Wacom Bamboo CTL-460 graphics tablet](./images/assessments/Captura%20desde%202026-10-13%2012-56-31.png)
 
-![Wacom Bamboo CTL-460 graphics tablet](./images/implementation/Captura%20desde%202026-10-13%2013-00-03.png)
+![Wacom Bamboo CTL-460 graphics tablet](./images/assessments/Captura%20desde%202026-10-13%2013-00-03.png)
 
 - Canon MF3010 printer and scanner
 > [!TODO]
@@ -88,32 +88,32 @@ The proposed strategy aims to extend the platform's operational life by at least
 
 Considering the current state of the hardware and the user's actual needs, no technical limitations have been identified that would require immediate replacement of the platform.
 
-![Main computer tower](./images/implementation/Captura%20desde%202026-10-13%2012-36-44.png)
+![Main computer tower](./images/assessments/Captura%20desde%202026-10-13%2012-36-44.png)
 
-![Main computer tower](./images/implementation/Captura%20desde%202026-10-13%2012-36-06.png)
+![Main computer tower](./images/assessments/Captura%20desde%202026-10-13%2012-36-06.png)
 
-![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212016.png)
+![CPU-Z information](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212016.png)
 
-![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212037.png)
+![CPU-Z information](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212037.png)
 
-![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212058.png)
+![CPU-Z information](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212058.png)
 
-![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212121.png)
+![CPU-Z information](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212121.png)
 
-![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212146.png)
+![CPU-Z information](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212146.png)
 
-![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212224.png)
+![CPU-Z information](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212224.png)
 
-![CPU-Z information](./images/implementation/Captura%20de%20pantalla%202026-10-06%20212532.png)
+![CPU-Z information](./images/assessments/Captura%20de%20pantalla%202026-10-06%20212532.png)
 
-![Computer components and purchase prices](./images/implementation/Captura%20desde%202026-10-13%2018-23-22.png)
+![Computer components and purchase prices](./images/assessments/Captura%20desde%202026-10-13%2018-23-22.png)
 
 ### Current Storage
 
 - Disk 1: 1 TB (current Windows 10 system)
 - Disk 2: 1 TB
 
-![Windows Disk Management showing the partitions](./images/implementation/Captura%20de%20pantalla%202026-10-06%20214011.png)
+![Windows Disk Management showing the partitions](./images/assessments/Captura%20de%20pantalla%202026-10-06%20214011.png)
 
 ### Components Planned for the Migration
 
@@ -122,13 +122,13 @@ Components from other computers will be reused to extend the service life of the
 Components to be added:
 
 - Reclaimed SSD to host the Windows 10 virtual machine.
-![OCZ Agility 3 2.5-inch SSD](./images/implementation/Captura%20desde%202026-10-13%2012-37-38.png)
+![OCZ Agility 3 2.5-inch SSD](./images/assessments/Captura%20desde%202026-10-13%2012-37-38.png)
 
-![OCZ Agility 3 2.5-inch SSD](./images/implementation/Captura%20desde%202026-10-13%2012-37-03.png)
+![OCZ Agility 3 2.5-inch SSD](./images/assessments/Captura%20desde%202026-10-13%2012-37-03.png)
 
 - Internal Wi-Fi network card to provide connectivity to the Ubuntu host system.
 
-![TP-Link TL-WN951N 300 Mbps PCI Wi-Fi adapter](./images/implementation/Captura%20desde%202026-10-13%2012-38-08.png)
+![TP-Link TL-WN951N 300 Mbps PCI Wi-Fi adapter](./images/assessments/Captura%20desde%202026-10-13%2012-38-08.png)
 
 
 ---
@@ -139,7 +139,7 @@ Components to be added:
 
 The computer currently uses Windows 10 as its primary operating system.
 
-![About Windows 10 Home, version 22H2](./images/implementation/Captura%20de%20pantalla%202026-10-06%20213052.png)
+![About Windows 10 Home, version 22H2](./images/assessments/Captura%20de%20pantalla%202026-10-06%20213052.png)
 
 ### Identified Risks
 
