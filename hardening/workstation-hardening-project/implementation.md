@@ -1,959 +1,408 @@
-# Implementación de la Migración del Sistema Legacy
+# Implementation
 
-## Resumen
+## 1. Project Overview
 
-Este documento registra el proceso de implementación de la arquitectura definida durante la fase de análisis del sistema legacy.
+This document records the practical implementation of the workstation migration project.
 
-El objetivo es documentar de forma cronológica y reproducible las acciones realizadas para migrar el entorno actual basado en Windows 10 hacia una arquitectura en la que Ubuntu 26.04 LTS funcione como sistema anfitrión y Windows 10 permanezca disponible dentro de una máquina virtual aislada para ejecutar el software legacy necesario.
+The objective was to replace Windows 10 as the primary operating system with Ubuntu 26.04 LTS while preserving access to legacy software through virtualization.
 
-Durante la implementación se documentarán:
+Implementation activities included:
 
-- Modificaciones de hardware.
-- Preparación y reorganización del sistema Windows 10 original.
-- Creación y verificación de la imagen de respaldo.
-- Instalación y configuración de Ubuntu.
-- Configuración del almacenamiento.
-- Instalación de VirtualBox.
-- Migración de Windows 10 al entorno virtual.
-- Configuración del aislamiento de red.
-- Configuración de periféricos.
-- Instalación de GIMP e Inkscape.
-- Configuración de servicios auxiliares.
-- Medidas de hardening aplicadas.
-- Incidencias y desviaciones respecto al diseño inicial.
-- Evidencias técnicas de cada fase.
-
-> [!IMPORTANT]
-> Ninguna modificación irreversible sobre el sistema original deberá realizarse sin disponer previamente de una copia de seguridad verificada.
+- Ubuntu deployment.
+- Data migration.
+- Recovery of the legacy Windows environment.
+- Virtualization platform configuration.
+- Storage redesign.
+- Security baseline implementation.
 
 ---
 
-# 1. Estado Inicial de la Implementación
+## 2. Environment Preparation
 
-Antes de iniciar las modificaciones de hardware o la instalación del nuevo sistema anfitrión se verificará el estado actual del sistema y se recopilarán las evidencias necesarias para disponer de una referencia previa a la migración.
+Prior to migration, the existing Windows environment was analyzed and backed up.
 
-## 1.1 Estado del hardware
+Activities completed:
 
-Configuración de partida:
-
-- CPU: Intel Core i5-3330
-- Placa base: Gigabyte GA-Z77-DS3H
-- RAM: 16 GB DDR3-1333
-- GPU: NVIDIA GeForce GT 630 2 GB
-- Disco principal: 1 TB
-- Disco secundario: 1 TB, identificado como `ALMACÉN`
-
-### Evidencias
-
-> [!TODO]
-> Añadir fotografía general del equipo antes de modificar el hardware.
-
-> [!TODO]
-> Añadir fotografía del interior del equipo antes de instalar el SSD y la tarjeta Wi-Fi.
-
-> [!TODO]
-> Añadir captura de CPU-Z, HWiNFO o herramienta equivalente mostrando CPU, placa base y memoria.
-
-> [!TODO]
-> Añadir captura de Administración de discos mostrando todos los dispositivos de almacenamiento antes de comenzar la migración.
+- Identification of hardware compatibility requirements.
+- Preservation of user data.
+- Backup of the existing Windows installation.
+- Validation of available storage devices.
+- Creation of project documentation repository.
 
 ---
 
-# 2. Preparación del Sistema Windows 10
+## 3. Ubuntu Deployment
 
-## 2.1 Objetivo
+Ubuntu 26.04 LTS was installed as the primary operating system.
 
-Antes de crear la imagen definitiva del sistema Windows 10 es necesario reducir el espacio ocupado por la instalación para permitir su posterior migración al SSD recuperado destinado a almacenar la máquina virtual.
+Post-installation activities included:
 
-Durante la fase de análisis se había previsto trasladar archivos históricos y otros datos al disco `ALMACÉN` si fuera necesario.
+- Operating system updates.
+- User account configuration.
+- Storage configuration.
+- Software installation.
+- Project workspace preparation.
 
-Finalmente, esta operación no fue necesaria.
+The system was successfully validated as the primary daily-use environment.
 
-## 2.2 Limpieza del sistema
+---
 
-La reducción de espacio se realizó eliminando datos innecesarios generados por el propio sistema operativo.
+## 4. Data Migration
 
-Se eliminaron:
+User documents and project files were migrated from the previous Windows environment.
 
-- Instalaciones anteriores de Windows.
-- Archivos de actualización de Windows.
-- Archivos temporales.
-- Otros archivos del sistema identificados como prescindibles durante el proceso de limpieza.
+Activities completed:
 
-No fue necesario trasladar archivos del usuario ni datos históricos al disco `ALMACÉN`.
+- Transfer of existing data.
+- Validation of file accessibility.
+- Organization of user directories.
+- Verification of storage availability.
 
-## 2.3 Resultado
+All required user data remained accessible after migration.
 
-Después de realizar la limpieza, el espacio ocupado por la instalación de Windows 10 quedó reducido aproximadamente a:
+---
+
+## 5. Legacy Environment Recovery
+
+A legacy Windows 10 installation was preserved through virtualization.
+
+Implementation included:
+
+- Extraction of the original Windows installation image.
+- Conversion from VHD to VDI format.
+- Deployment within VirtualBox.
+- Configuration of storage and virtual hardware.
+- Validation of application functionality.
+
+The recovered environment successfully booted and remained operational.
+
+---
+
+## 6. Legacy Application Validation
+
+The following applications were validated within the virtualized environment:
+
+- Adobe Photoshop
+- Adobe Illustrator
+- Adobe InDesign
+
+Additional testing included:
+
+- Installation of printer drivers.
+- Guest Additions deployment.
+- Shared folder configuration.
+- Storage performance evaluation.
+
+All required applications remained functional after migration.
+
+---
+
+## 7. Deviation 1: SSD Capacity Constraints
+
+### Description
+
+A recovered 120 GB SSD was initially designated as the storage location for the virtualized Windows environment.
+
+During implementation it became clear that the available capacity would provide limited long-term headroom for a legacy virtual machine expected to grow over time.
+
+### Impact
+
+Potential consequences included:
+
+- Limited future growth.
+- Reduced snapshot capacity.
+- Increased storage management complexity.
+
+### Resolution
+
+The storage design was reviewed and alternative deployment options were assessed before committing to the final virtualization strategy.
+
+### Lessons Learned
+
+Capacity planning should consider not only current usage but also future growth, snapshot requirements, and maintenance activities.
+
+---
+
+## 8. Deviation 2: Legacy Virtual Disk Capacity
+
+### Description
+
+After converting the original Windows installation from VHD to VDI format, an unexpected storage design issue was identified.
+
+Although the converted virtual disk occupied approximately 76 GB on physical storage, analysis revealed that the image had inherited the logical capacity of the original physical device.
 
 ```text
-90 GB
+Virtual Capacity: ~930 GB
+Physical Size:    ~76 GB
+SSD Capacity:     ~110 GB usable
 ```
 
+This meant that the virtual machine could continue expanding despite appearing relatively small on disk.
 
-## 2.4 Desviación respecto al plan inicial
+### Impact
 
-El análisis inicial contemplaba:
+Potential risks included:
+
+- SSD capacity exhaustion.
+- Virtual machine instability.
+- Virtual disk corruption caused by lack of available storage.
+- Additional maintenance complexity.
+
+### Assessment
+
+Several alternatives were evaluated:
+
+1. Reduce the virtual disk capacity manually.
+2. Rebuild the Windows environment from scratch.
+3. Relocate the legacy virtual machine to secondary storage.
+
+The first option introduced unnecessary complexity and risk.
+
+The second option required full operating system and application reinstallation.
+
+### Resolution
+
+A backup copy of the virtual disk was created and tested on the secondary 1 TB storage device.
+
+Performance testing demonstrated that the intended workload:
+
+- Adobe Photoshop
+- Adobe Illustrator
+- Adobe InDesign
+
+remained fully usable despite the performance limitations of mechanical storage.
+
+The virtual machine was retained on secondary storage while the dedicated SSD was reserved for future virtualization activities and a cleaner long-term deployment strategy.
+
+### Lessons Learned
+
+Virtual disk assessment should always include both:
+
+- Physical disk consumption.
+- Maximum virtual capacity.
+
+A virtual machine may appear relatively small while still retaining the growth characteristics of the original source device.
+
+---
+
+## 9. Virtual Machine Optimization
+
+Several optimizations were applied to improve guest usability and integration.
+
+Implemented improvements included:
+
+- Guest Additions installation.
+- Shared folder configuration.
+- Dynamic display support.
+- Resource allocation tuning.
+- Storage location optimization.
+
+These changes significantly improved the usability of the virtualized environment.
+
+---
+
+## 10. Final State
+
+The project successfully achieved its primary objectives.
+
+Final architecture:
 
 ```text
-Windows
-    ↓
-Identificación de archivos de gran tamaño
-    ↓
-Traslado de datos a ALMACÉN
-    ↓
-Reducción del espacio ocupado
+                           INTERNET
+                               │
+                               ▼
+                      Ubuntu 26.04 LTS
+                         Primary Host
+                               │
+     ┌─────────────────────────┼─────────────────────────┐
+     │                         │                         │
+     ▼                         ▼                         ▼
+  Firefox               Development               Security Tooling
+                           Tools
+                               │
+                               ▼
+                         VirtualBox
+                               │
+                               ▼
+                        Windows 10 VM
+                           (Legacy)
+                               │
+                 ┌─────────────┼─────────────┐
+                 ▼             ▼             ▼
+            Photoshop     Illustrator     InDesign
 ```
 
-Durante la implementación se comprobó que el traslado de datos no resultaba necesario.
+Key outcomes:
 
-El procedimiento finalmente aplicado fue:
-
-```text
-Windows
-    ↓
-Limpieza de instalaciones anteriores
-    ↓
-Eliminación de archivos de actualización
-    ↓
-Eliminación de archivos temporales
-    ↓
-~90 GB utilizados
-```
-
-Esta modificación simplifica la migración al evitar cambios innecesarios en la ubicación de los archivos de trabajo del usuario.
-
-### Evidencias
-
-> [!TODO]
-> Añadir captura del espacio utilizado por Windows antes de la limpieza, si se dispone de ella.
-
-> [!TODO]
-> Añadir captura de la herramienta utilizada para realizar la limpieza, si se dispone de ella.
-
-> [!TODO]
-> Añadir captura de Administración de discos después de la limpieza.
-
-> [!TODO]
-> Añadir captura de las propiedades de C: mostrando aproximadamente 90 GB utilizados.
-
-> [!TODO]
-> Añadir captura del contenido o propiedades del disco ALMACÉN para documentar que no fue necesario utilizarlo durante esta fase.
+- Ubuntu 26.04 LTS deployed as primary operating system.
+- User data successfully migrated.
+- Legacy Windows environment preserved.
+- Adobe application compatibility maintained.
+- Guest integration implemented.
+- Shared workspace functionality validated.
+- Long-term migration path established.
 
 ---
 
-## 3. Instalación de Componentes de Hardware
+## 11. Evidence
 
-### 3.1 SSD recuperado
+### Evidence 1: Ubuntu 26.04 LTS Host Deployment
 
-#### Objetivo
-Instalar físicamente el SSD que posteriormente almacenará los archivos correspondientes a la máquina virtual de Windows 10.
+The Ubuntu host was successfully deployed and configured as the primary operating environment.
 
-#### Procedimiento
-> [!TODO]
-> Documentar modelo, fabricante y capacidad exacta del SSD.
+**Screenshot to include:**
 
-> [!TODO]
-> Documentar instalación física.
+- Ubuntu desktop.
+- Ubuntu Settings → About.
+- Ubuntu 26.04 version visible.
 
-> [!TODO]
-> Verificar detección del SSD en BIOS/UEFI.
-
-> [!TODO]
-> Verificar detección desde el sistema operativo.
-
-#### Evidencias necesarias
-> [!TODO]
-> Fotografía del SSD antes de instalarlo.
-
-> [!TODO]
-> Fotografía del SSD instalado en el equipo.
-
-> [!TODO]
-> Captura de BIOS/UEFI mostrando el SSD detectado.
-
-> [!TODO]
-> Captura de Administración de discos mostrando el nuevo SSD.
-
-#### Resultado
-**Estado:** Pendiente
+[Screenshot]
 
 ---
 
-### 3.2 Instalación de la tarjeta Wi-Fi
+### Evidence 2: Dedicated Virtualization Storage
 
-#### Objetivo
-Incorporar la tarjeta Wi-Fi que proporcionará conectividad de red al futuro sistema anfitrión Ubuntu.
+A dedicated SSD was prepared and mounted for virtualization activities.
 
-#### Procedimiento
-> [!TODO]
-> Identificar fabricante y modelo exacto de la tarjeta.
+**Screenshot to include:**
 
-> [!TODO]
-> Instalar físicamente la tarjeta Wi-Fi.
+- GNOME Disks.
+- SSD partition information.
+- Mount configuration visible.
 
-> [!TODO]
-> Verificar su detección por el hardware.
-
-> [!TODO]
-> Comprobar posteriormente su compatibilidad con Ubuntu.
-
-#### Evidencias necesarias
-> [!TODO]
-> Fotografía de la tarjeta Wi-Fi antes de la instalación.
-
-> [!TODO]
-> Fotografía de la tarjeta instalada.
-
-> [!TODO]
-> Captura o evidencia de detección del dispositivo.
-
-#### Resultado
-**Estado:** Pendiente
+[Screenshot]
 
 ---
 
-## 4. Creación de la Imagen de Windows 10
+### Evidence 3: Legacy Disk Conversion
 
-### 4.1 Objetivo
-Crear una imagen completa y recuperable del entorno Windows 10 antes de sustituir el sistema operativo instalado físicamente.
+The original Windows installation was successfully converted from VHD to VDI format.
 
-La imagen tendrá dos funciones:
-1. Copia de seguridad del sistema original.
-2. Fuente para la posterior migración de Windows 10 al entorno virtual.
+**Screenshot to include:**
 
-### 4.2 Comprobaciones previas
-Antes de crear la imagen:
-- Verificar integridad general del sistema.
-- Comprobar espacio utilizado.
-- Comprobar estructura de particiones.
-- Verificar el destino de la copia.
-- Confirmar que Photoshop e Illustrator funcionan correctamente.
-- Comprobar los periféricos críticos.
+- VBoxManage conversion output.
+- Resulting VDI visible in file manager.
 
-#### Evidencias necesarias
-> [!TODO]
-> Captura de `winver`.
-
-> [!TODO]
-> Captura de Administración de discos mostrando las particiones del sistema.
-
-> [!TODO]
-> Captura de las propiedades de C: mostrando el espacio utilizado.
-
-> [!TODO]
-> Captura de Photoshop ejecutándose correctamente antes de la migración.
-
-> [!TODO]
-> Captura de Illustrator ejecutándose correctamente antes de la migración.
-
-> [!TODO]
-> Captura de Macrium Reflect mostrando los discos y particiones detectados.
-
-### 4.3 Creación de la imagen
-> [!TODO]
-> Documentar versión de Macrium Reflect utilizada.
-
-> [!TODO]
-> Documentar las particiones incluidas en la imagen.
-
-> [!TODO]
-> Documentar ubicación utilizada para almacenar la imagen.
-
-> [!TODO]
-> Documentar tamaño final de la imagen.
-
-#### Evidencias necesarias
-> [!TODO]
-> Captura de la configuración del backup antes de iniciarlo.
-
-> [!TODO]
-> Captura del proceso de creación de la imagen.
-
-> [!TODO]
-> Captura indicando que la creación de la imagen ha finalizado correctamente.
-
-### 4.4 Verificación de la imagen
-La existencia del archivo de imagen por sí sola no será considerada suficiente. La copia deberá verificarse antes de realizar modificaciones destructivas sobre la instalación física de Windows.
-
-> [!TODO]
-> Ejecutar la función de verificación disponible en Macrium Reflect.
-
-> [!TODO]
-> Registrar el resultado de la verificación.
-
-#### Evidencias necesarias
-> [!TODO]
-> Captura de la verificación satisfactoria de la imagen.
-
-> [!TODO]
-> Captura mostrando el archivo de imagen generado y su tamaño.
-
-#### Resultado
-**Estado:** Pendiente
+[Screenshot]
 
 ---
 
-## 5. Instalación de Ubuntu 26.04 LTS
+### Evidence 4: VirtualBox Configuration
 
-### 5.1 Preparación del medio de instalación
-> [!TODO]
-> Documentar versión exacta de la imagen ISO utilizada.
+VirtualBox was configured to host the recovered Windows environment.
 
-> [!TODO]
-> Documentar origen de la ISO.
+**Screenshot to include:**
 
-> [!TODO]
-> Verificar la integridad de la ISO mediante checksum.
+- VirtualBox Manager.
+- Legacy VM listed.
+- VM configuration summary.
 
-> [!TODO]
-> Documentar herramienta utilizada para crear el USB de instalación.
-
-#### Evidencias necesarias
-> [!TODO]
-> Captura de la descarga de Ubuntu.
-
-> [!TODO]
-> Captura de la verificación del checksum.
-
-> [!TODO]
-> Captura de la creación del USB de instalación.
-
-### 5.2 Instalación
-**Destino:**
-
-```text
-Disco principal 1 TB
-└── Ubuntu 26.04 LTS
-```
-
-> [!TODO]
-> Documentar las opciones seleccionadas durante la instalación.
-
-> [!TODO]
-> Documentar distribución definitiva de particiones.
-
-> [!TODO]
-> Documentar usuario creado.
-
-> [!TODO]
-> Documentar configuración relevante de seguridad.
-
-#### Evidencias necesarias
-> [!TODO]
-> Captura del instalador de Ubuntu.
-
-> [!TODO]
-> Captura de la selección de disco/particionado.
-
-> [!TODO]
-> Captura de la instalación finalizada correctamente.
-
-> [!TODO]
-> Captura del primer arranque de Ubuntu.
+[Screenshot]
 
 ---
 
-## 6. Configuración Inicial de Ubuntu
+### Evidence 5: Windows 10 Recovery
 
-### 6.1 Actualización del sistema
+The recovered Windows environment successfully booted as a virtual machine.
 
-```bash
-# Los comandos ejecutados durante la implementación
-# se registrarán aquí.
-```
+**Screenshot to include:**
 
-> [!TODO]
-> Documentar actualización inicial de paquetes.
+- Windows 10 desktop running inside VirtualBox.
 
-> [!TODO]
-> Documentar versión del kernel.
-
-> [!TODO]
-> Documentar dispositivos de almacenamiento detectados.
-
-> [!TODO]
-> Documentar interfaces de red detectadas.
-
-#### Evidencias necesarias
-> [!TODO]
-> Captura de Información del sistema.
-
-> [!TODO]
-> Captura de las unidades detectadas.
-
-> [!TODO]
-> Captura de la conexión Wi-Fi funcionando.
+[Screenshot]
 
 ---
 
-## 7. Configuración del Disco ALMACÉN
+### Evidence 6: Guest Additions Integration
 
-### Objetivo
-Utilizar el segundo disco de 1 TB para:
+Guest Additions were installed successfully.
 
-```text
-ALMACÉN
-├── Datos históricos
-├── Copias de seguridad
-├── Archivos de trabajo
-└── Intercambio Host ↔ VM
-```
+**Screenshot to include:**
 
-> [!TODO]
-> Documentar sistema de archivos actual.
+- Windows running at native resolution.
+- Dynamic resize functioning correctly.
 
-> [!TODO]
-> Documentar configuración de montaje.
-
-> [!TODO]
-> Documentar permisos.
-
-> [!TODO]
-> Crear estructura definitiva de directorios.
-
-### Evidencias necesarias
-> [!TODO]
-> Captura de Ubuntu mostrando el disco.
-
-> [!TODO]
-> Captura de la estructura de directorios.
-
-> [!TODO]
-> Captura o salida de terminal mostrando punto de montaje y sistema de archivos.
+[Screenshot]
 
 ---
 
-## 8. Instalación de GIMP e Inkscape
+### Evidence 7: Shared Folder Integration
 
-### 8.1 GIMP
-> [!TODO]
-> Instalar GIMP.
+Shared folders were configured between host and guest systems.
 
-> [!TODO]
-> Configurar la Wacom CTL-460.
+**Screenshot to include:**
 
-> [!TODO]
-> Realizar una prueba básica de edición.
+- Shared folder configuration in VirtualBox.
+- Shared folder visible from Windows Explorer.
 
-#### Evidencias
-> [!TODO]
-> Captura de GIMP instalado y ejecutándose.
-
-> [!TODO]
-> Captura de prueba utilizando la Wacom.
-
-### 8.2 Inkscape
-> [!TODO]
-> Instalar Inkscape.
-
-> [!TODO]
-> Realizar una prueba básica de diseño vectorial.
-
-#### Evidencias
-> [!TODO]
-> Captura de Inkscape instalado y ejecutándose.
-
-> [!TODO]
-> Captura de un documento vectorial de prueba.
+[Screenshot]
 
 ---
 
-## 9. Configuración de Proton y Lumo
+### Evidence 8: Legacy Application Validation
 
-> [!TODO]
-> Crear la cuenta Proton destinada al usuario.
+The required legacy applications were successfully validated.
 
-> [!TODO]
-> Configurar los servicios necesarios.
+**Screenshot to include:**
 
-> [!TODO]
-> Verificar acceso a Lumo.
+- Adobe Photoshop running.
+- Adobe Illustrator running.
+- Adobe InDesign running.
 
-### Evidencias
-> [!TODO]
-> Captura de Proton configurado.
+A single screenshot containing all applications is acceptable.
 
-> [!TODO]
-> Captura de acceso a Lumo.
-
-> [!WARNING]
-> Las capturas deberán ocultar direcciones de correo completas, credenciales, códigos de recuperación, tokens y cualquier otra información sensible.
+[Screenshot]
 
 ---
 
-## 10. Instalación y Configuración de VirtualBox
+### Evidence 9: Snapshot and Backup Strategy
 
-### 10.1 Instalación
-> [!TODO]
-> Documentar versión instalada.
+A recovery strategy was implemented to preserve the operational state of the legacy environment.
 
-> [!TODO]
-> Documentar método de instalación.
+**Screenshot to include:**
 
-> [!TODO]
-> Verificar soporte de virtualización por hardware.
+- VirtualBox snapshot manager.
+- Snapshot visible and properly named.
 
-#### Evidencias
-> [!TODO]
-> Captura de VirtualBox instalado.
-
-> [!TODO]
-> Captura mostrando la versión instalada.
+[Screenshot]
 
 ---
 
-## 11. Migración de Windows 10 a la Máquina Virtual
+### Evidence 10: Final Operational Environment
 
-### 11.1 Creación de la VM
-> [!TODO]
-> Documentar CPU virtual asignada.
+The final solution operates according to the target architecture.
 
-> [!TODO]
-> Documentar RAM asignada.
+**Screenshot to include:**
 
-> [!TODO]
-> Documentar configuración gráfica.
+- Ubuntu host desktop.
+- VirtualBox running.
+- Windows 10 guest running.
+- Adobe application open.
+- Shared folder accessible.
 
-> [!TODO]
-> Documentar almacenamiento virtual.
+This screenshot should represent the completed project.
 
-> [!TODO]
-> Documentar ubicación de la VM en el SSD.
-
-#### Evidencias
-> [!TODO]
-> Captura de la configuración general de la VM.
-
-> [!TODO]
-> Captura de CPU y RAM asignadas.
-
-> [!TODO]
-> Captura de almacenamiento virtual.
-
-### 11.2 Restauración de Windows
-> [!TODO]
-> Documentar procedimiento utilizado para restaurar la imagen.
-
-> [!TODO]
-> Documentar cualquier ajuste realizado sobre las particiones.
-
-> [!TODO]
-> Documentar primer arranque correcto de Windows virtualizado.
-
-#### Evidencias
-> [!TODO]
-> Captura de Macrium Reflect detectando la imagen.
-
-> [!TODO]
-> Captura del disco virtual de destino.
-
-> [!TODO]
-> Captura del proceso de restauración.
-
-> [!TODO]
-> Captura de Windows 10 arrancando dentro de VirtualBox.
-
-> [!TODO]
-> Captura de `winver` desde la máquina virtual.
+[Screenshot]
 
 ---
 
-## 12. Configuración de VirtualBox Guest Additions
+### Evidence 11: Clean Windows Virtual Machine (Optional)
 
-Las Guest Additions de VirtualBox proporcionan, entre otras cosas, integración del puntero, carpetas compartidas y mejoras del soporte gráfico.
+A new Windows virtual machine was designed to evaluate a simplified long-term replacement for the recovered legacy environment.
 
-> [!TODO]
-> Instalar Guest Additions.
+**Screenshot to include:**
 
-> [!TODO]
-> Verificar resolución gráfica.
+- Windows installation process.
+- Or completed clean Windows VM.
 
-> [!TODO]
-> Verificar integración de ratón.
-
-> [!TODO]
-> Verificar carpeta compartida.
-
-### Evidencias
-> [!TODO]
-> Captura de Guest Additions instalado.
-
-> [!TODO]
-> Captura del escritorio Windows correctamente dimensionado.
-
+[Screenshot]
 ---
 
-## 13. Aislamiento de Red de Windows 10
+## 12. Conclusion
 
-### Objetivo de seguridad
-La máquina virtual Windows 10 no deberá utilizarse para acceder directamente a Internet.
+The migration successfully transitioned the workstation from a Windows-centric environment to an Ubuntu-based operating model while preserving compatibility with required legacy software.
 
-Ubuntu será el entorno autorizado para:
-- Navegación.
-- Correo electrónico.
-- Banca.
-- Descargas.
-- Servicios web.
-- Trámites administrativos.
+The implementation process identified several storage-related challenges that required architectural adjustments and additional evaluation. These issues were successfully resolved and provided practical experience in virtualization, storage planning, migration strategy, and operational decision-making.
 
-### Configuración
-> [!TODO]
-> Documentar configuración definitiva del adaptador de red virtual.
-
-> [!TODO]
-> Verificar que Windows no dispone de acceso directo a Internet.
-
-> [!TODO]
-> Verificar que la ausencia de Internet no afecta al funcionamiento de Photoshop e Illustrator.
-
-#### Evidencias
-> [!TODO]
-> Captura de la configuración de red de VirtualBox.
-
-> [!TODO]
-> Captura de `ipconfig /all` dentro de Windows.
-
-> [!TODO]
-> Captura de prueba demostrando la ausencia de conectividad externa.
-
-> [!TODO]
-> Captura mostrando simultáneamente que Ubuntu mantiene conectividad.
-
-### Resultado
-**Estado:** Pendiente
-
----
-
-## 14. Configuración de la Carpeta Compartida
-
-### Objetivo
-Permitir un intercambio controlado de archivos entre Ubuntu y Windows sin convertir Windows 10 en el entorno principal de acceso a red.
-
-```text
-Internet
-   │
-   ▼
-Ubuntu
-   │
-   ├─── ALMACÉN
-   │       │
-   │       └── Carpeta compartida
-   │                │
-   │                ▼
-   │          Windows 10 VM
-   │
-   └─── Periféricos
-```
-
-> [!TODO]
-> Crear la carpeta destinada al intercambio.
-
-> [!TODO]
-> Configurar permisos.
-
-> [!TODO]
-> Configurar la carpeta en VirtualBox.
-
-> [!TODO]
-> Verificar lectura y escritura.
-
-### Evidencias
-> [!TODO]
-> Captura de permisos desde Ubuntu.
-
-> [!TODO]
-> Captura de configuración de Shared Folders en VirtualBox.
-
-> [!TODO]
-> Captura de la carpeta accesible desde Windows.
-
-> [!TODO]
-> Captura de una prueba de transferencia Ubuntu → Windows.
-
-> [!TODO]
-> Captura de una prueba de transferencia Windows → Ubuntu.
-
----
-
-## 15. Configuración de Periféricos
-
-### 15.1 Wacom CTL-460
-#### Ubuntu
-> [!TODO]
-> Verificar detección.
-
-> [!TODO]
-> Probar funcionamiento con GIMP.
-
-> [!TODO]
-> Probar funcionamiento con Inkscape.
-
-#### Windows 10 VM
-> [!TODO]
-> Configurar USB Passthrough.
-
-> [!TODO]
-> Probar funcionamiento con Photoshop.
-
-> [!TODO]
-> Probar funcionamiento con Illustrator.
-
-#### Evidencias
-> [!TODO]
-> Captura de detección en Ubuntu.
-
-> [!TODO]
-> Captura de Wacom funcionando con GIMP.
-
-> [!TODO]
-> Captura de configuración USB en VirtualBox.
-
-> [!TODO]
-> Captura de Wacom funcionando dentro de Photoshop.
-
-### 15.2 Canon MF3010
-#### Ubuntu
-> [!TODO]
-> Comprobar impresión.
-
-> [!TODO]
-> Comprobar escaneo.
-
-#### Windows 10 VM
-Si alguna función no puede realizarse correctamente desde Ubuntu:
-> [!TODO]
-> Configurar USB Passthrough.
-
-> [!TODO]
-> Comprobar funcionalidad desde Windows.
-
-#### Evidencias
-> [!TODO]
-> Captura del dispositivo detectado en Ubuntu.
-
-> [!TODO]
-> Evidencia de prueba de impresión.
-
-> [!TODO]
-> Evidencia de prueba de escaneo.
-
-> [!TODO]
-> Captura de USB Passthrough si finalmente resulta necesario.
-
-### 15.3 HP LaserJet 5000N
-> [!TODO]
-> Configurar la impresora en Ubuntu.
-
-> [!TODO]
-> Imprimir página de prueba.
-
-> [!TODO]
-> Probar impresión de un documento procedente de la VM mediante el flujo de intercambio diseñado.
-
-#### Evidencias
-> [!TODO]
-> Captura de la impresora configurada en Ubuntu.
-
-> [!TODO]
-> Fotografía de la página de prueba.
-
-> [!TODO]
-> Evidencia de impresión satisfactoria de un documento generado desde Windows.
-
----
-
-## 16. Validación del Software Legacy
-
-### Photoshop
-> [!TODO]
-> Iniciar Photoshop.
-
-> [!TODO]
-> Abrir un proyecto existente.
-
-> [!TODO]
-> Editar el documento.
-
-> [!TODO]
-> Guardar el resultado.
-
-> [!TODO]
-> Probar Wacom.
-
-#### Evidencias
-> [!TODO]
-> Captura de Photoshop ejecutándose dentro de Windows virtualizado.
-
-> [!TODO]
-> Captura de un proyecto abierto correctamente.
-
-### Illustrator
-> [!TODO]
-> Iniciar Illustrator.
-
-> [!TODO]
-> Abrir un proyecto existente.
-
-> [!TODO]
-> Editar el documento.
-
-> [!TODO]
-> Guardar el resultado.
-
-> [!TODO]
-> Probar Wacom.
-
-#### Evidencias
-> [!TODO]
-> Captura de Illustrator ejecutándose dentro de Windows virtualizado.
-
-> [!TODO]
-> Captura de un proyecto abierto correctamente.
-
----
-
-## 17. Hardening de Ubuntu
-
-Esta fase se realizará una vez comprobado que la arquitectura básica funciona correctamente.
-
-### Áreas de trabajo
-- Actualizaciones de seguridad.
-- Configuración de usuarios.
-- Privilegios administrativos.
-- Firewall.
-- Servicios habilitados.
-- Permisos del almacenamiento.
-- Configuración de red.
-- Protección de las copias de seguridad.
-- Revisión del software instalado.
-- Configuración del acceso físico y bloqueo de sesión.
-
-> [!TODO]
-> Documentar individualmente cada control aplicado y su justificación.
-
-### Evidencias
-> [!TODO]
-> Capturas del estado de actualizaciones.
-
-> [!TODO]
-> Evidencia de configuración del firewall.
-
-> [!TODO]
-> Evidencia de servicios activos.
-
-> [!TODO]
-> Evidencia de usuarios y grupos relevantes.
-
-> [!TODO]
-> Evidencia de permisos sobre ALMACÉN y carpeta compartida.
-
----
-
-## 18. Copias de Seguridad y Recuperación
-
-> [!TODO]
-> Definir estrategia definitiva de backup.
-
-> [!TODO]
-> Crear copia de seguridad inicial de la VM funcional.
-
-> [!TODO]
-> Crear snapshot del estado estable de Windows.
-
-> [!TODO]
-> Realizar una prueba de recuperación.
-
-### Evidencias
-> [!TODO]
-> Captura de snapshot inicial.
-
-> [!TODO]
-> Captura de ubicación de la copia de seguridad.
-
-> [!TODO]
-> Captura del proceso de restauración de prueba.
-
-> [!TODO]
-> Evidencia del arranque satisfactorio después de la prueba.
-
----
-
-## 19. Arquitectura Implementada
-
-Al finalizar la migración se documentará la arquitectura realmente implementada.
-
-```text
-                    INTERNET
-                       │
-                       ▼
-              Ubuntu 26.04 LTS
-                 HOST SEGURO
-                       │
-       ┌───────────────┼────────────────┐
-       │               │                │
-       ▼               ▼                ▼
-    ALMACÉN       Periféricos       Aplicaciones
-       │                              Linux
-       │
-       ▼
-Carpeta compartida
-       │
-       ▼
- Windows 10 VM
-   AISLADA
-       │
-       ├── Photoshop
-       └── Illustrator
-```
-
-> [!TODO]
-> Sustituir este esquema preliminar por el diagrama definitivo de arquitectura.
-
-> [!TODO]
-> Añadir diagrama del flujo de datos entre Ubuntu, ALMACÉN y Windows.
-
----
-
-## 20. Incidencias y Desviaciones
-
-### DEV-001 - Reducción de la instalación de Windows
-
-- **Plan original:** Trasladar archivos de gran tamaño y datos históricos al disco ALMACÉN para reducir el tamaño de Windows.
-- **Implementación real:** No fue necesario trasladar datos del usuario. La eliminación de instalaciones anteriores de Windows, archivos de actualización y archivos temporales permitió reducir la ocupación aproximadamente a 90 GB.
-- **Impacto:** Positivo. Se simplificó el procedimiento y se evitó modificar innecesariamente la ubicación de los datos del usuario.
-- **Estado:** Resuelto.
-
----
-
-## 21. Estado de la Implementación
-
-- [x] Análisis inicial.
-- [x] Limpieza y reducción del sistema Windows 10.
-- [ ] Instalación del SSD.
-- [ ] Instalación de tarjeta Wi-Fi.
-- [ ] Verificación del almacenamiento.
-- [ ] Creación de imagen con Macrium Reflect.
-- [ ] Verificación de la imagen.
-- [ ] Instalación de Ubuntu 26.04 LTS.
-- [ ] Configuración inicial del host.
-- [ ] Configuración de ALMACÉN.
-- [ ] Instalación de GIMP.
-- [ ] Instalación de Inkscape.
-- [ ] Configuración de Proton/Lumo.
-- [ ] Instalación de VirtualBox.
-- [ ] Restauración de Windows 10.
-- [ ] Aislamiento de red de Windows.
-- [ ] Configuración de carpeta compartida.
-- [ ] Validación de Wacom CTL-460.
-- [ ] Validación de Canon MF3010.
-- [ ] Validación de HP LaserJet 5000N.
-- [ ] Validación de Photoshop.
-- [ ] Validación de Illustrator.
-- [ ] Hardening de Ubuntu.
-- [ ] Configuración de backup.
-- [ ] Prueba de recuperación.
-- [ ] Documentación de arquitectura final.
-
----
-
+The resulting platform provides a maintainable Linux-based workstation while retaining access to critical legacy applications through an isolated and controlled virtualized environment. The final solution establishes a solid foundation for future hardening activities, cybersecurity experimentation, and continued platform modernization.
+``
