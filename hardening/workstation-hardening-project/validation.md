@@ -151,23 +151,52 @@ The following security objectives were validated:
 
 ---
 
-## 7. Issues Identified
+### 7. Issues Identified
 
-The following issues were identified during validation:
+The following issue was identified during validation activities.
 
-### VAL-ISSUE-001
+### VAL-ISSUE-001-002
 
 **Description**
 
-The recovered Windows virtual machine inherited a virtual storage capacity significantly larger than its physical usage.
+The initial recovery approach relied on a virtual disk created from the original Windows installation.
+
+Although the recovered virtual machine was fully functional, analysis revealed that it inherited a virtual disk structure designed for the original physical system. This introduced unnecessary storage complexity and reduced long-term maintainability.
+
+**Assessment**
+
+The recovered environment successfully demonstrated the feasibility of preserving the original Windows installation.
+
+However, the recovered image was considered suboptimal for long-term operational use due to:
+
+- Large inherited virtual disk capacity.
+- Legacy operating system configuration.
+- Unnecessary historical data.
+- Reduced storage efficiency.
+
+**Resolution**
+
+Instead of continuing with the recovered image, a new Windows 10 virtual machine was deployed on the dedicated SSD.
+
+The new virtual machine provided:
+
+- A clean operating system installation.
+- Reduced storage requirements.
+- Improved maintainability.
+- Predictable storage consumption.
+- Better suitability for long-term operation.
+
+Required legacy applications were reinstalled and validated within the new environment.
 
 **Status**
 
-Mitigated through alternative storage placement and operational controls.
+Resolved.
 
 **Impact**
 
-Low.
+None.
+
+The issue resulted in an improved final solution and did not affect project objectives.
 
 ---
 

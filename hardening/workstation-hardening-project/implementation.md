@@ -386,7 +386,7 @@ This screenshot should represent the completed project.
 
 ---
 
-### Evidence 11: Clean Windows Virtual Machine (Optional)
+### Evidence 11: Clean Windows Virtual Machine
 
 A new Windows virtual machine was designed to evaluate a simplified long-term replacement for the recovered legacy environment.
 
