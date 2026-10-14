@@ -28,17 +28,15 @@ Internet
     ▼
 Ubuntu 26.04 LTS
     │
-    ├── Development
-    ├── Security Tooling
-    ├── Daily Operations
-    │
-    ▼
-VirtualBox
-    │
-    ▼
-Windows 10 VM
-    ├── Photoshop
-    └── Illustrator
+    ├── Firefox
+    ├── GIMP
+    ├── Inkscape
+    └── VirtualBox
+          │
+          ▼
+     Windows 10 VM
+          ├── Photoshop
+          └── Illustrator
 ```
 
 ---
@@ -48,8 +46,10 @@ Windows 10 VM
 | Document | Description |
 |-----------|-----------|
 | assessment.md | Initial assessment, requirements, risks, and decision-making process |
+| assessment-es.md | Spanish version of the assessment document |
 | architecture.md | Target architecture and design decisions |
 | implementation.md | Implementation activities, configuration steps, and evidence |
+| validation.md | Validation activities, testing results, and final project verification |
 
 ---
 
@@ -68,9 +68,9 @@ Windows 10 VM
 
 ## Project Status
 
-Current phase: Implementation and migration.
+Current phase: Completed.
 
-Completed activities are documented in `implementation.md`.
+Project activities, implementation evidence, and validation results are documented throughout the project documentation set.
 
 ---
 
