@@ -169,7 +169,7 @@ The solution follows several security-focused principles:
 
 ### 9.1 Physical Architecture
 
-'''
+```
     INTERNET
         │
         ▼
