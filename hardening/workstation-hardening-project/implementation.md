@@ -250,13 +250,9 @@ Key outcomes:
 
 The Ubuntu host was successfully deployed and configured as the primary operating environment.
 
-**Screenshot to include:**
+![Ubuntu 26.04 LTS Host Deployment](./images/implementation/Captura%20desde%202026-10-14%2013-39-55.png)
 
-- Ubuntu desktop.
-- Ubuntu Settings → About.
-- Ubuntu 26.04 version visible.
-
-[Screenshot]
+![Ubuntu 26.04 LTS Host Deployment](./images/implementation/Captura%20desde%202026-10-14%2013-02-54.png)
 
 ---
 
@@ -264,13 +260,9 @@ The Ubuntu host was successfully deployed and configured as the primary operatin
 
 A dedicated SSD was prepared and mounted for virtualization activities.
 
-**Screenshot to include:**
-
-- GNOME Disks.
-- SSD partition information.
-- Mount configuration visible.
-
-[Screenshot]
+![Dedicated Virtualization Storage 1](./images/implementation/Captura%20desde%202026-10-14%2013-38-47.png)
+![Dedicated Virtualization Storage 2](./images/implementation/Captura%20desde%202026-10-14%2013-39-00.png)
+![Dedicated Virtualization Storage 3](./images/implementation/Captura%20desde%202026-10-14%2013-38-55.png)
 
 ---
 
@@ -278,64 +270,46 @@ A dedicated SSD was prepared and mounted for virtualization activities.
 
 The original Windows installation was successfully converted from VHD to VDI format.
 
-**Screenshot to include:**
+![Legacy Disk Conversion](./images/implementation/Captura%20de%20pantalla%202026-10-07%20205332.png)
 
-- VBoxManage conversion output.
-- Resulting VDI visible in file manager.
+![Legacy Disk Conversion](./images/implementation/Captura%20de%20pantalla%202026-10-07%20205451.png)
 
-[Screenshot]
+![Legacy Disk Conversion](./images/implementation/Captura%20de%20pantalla%202026-10-07%20210743.png)
 
 ---
 
-### Evidence 4: VirtualBox Configuration
+### Evidence 4: VirtualBox Configuration tested into another machine
 
 VirtualBox was configured to host the recovered Windows environment.
 
-**Screenshot to include:**
-
-- VirtualBox Manager.
-- Legacy VM listed.
-- VM configuration summary.
-
-[Screenshot]
+![VirtualBox Configuration](./images/implementation/Captura%20desde%202026-10-14%2012-21-04.png)
 
 ---
 
-### Evidence 5: Windows 10 Recovery
+### Evidence 5: Windows 10 Recovery tested into another machine
 
 The recovered Windows environment successfully booted as a virtual machine.
 
-**Screenshot to include:**
-
-- Windows 10 desktop running inside VirtualBox.
-
-[Screenshot]
+![Windows 10 Recovery tested into another machine](./images/implementation/Captura%20desde%202026-10-14%2012-24-31.png)
 
 ---
 
-### Evidence 6: Guest Additions Integration
+### Evidence 6: Windows 10 Clean Running
 
-Guest Additions were installed successfully.
+The recovered Windows environment successfully booted as a virtual machine.
 
-**Screenshot to include:**
-
-- Windows running at native resolution.
-- Dynamic resize functioning correctly.
-
-[Screenshot]
+![Windows 10 Clean Running](./images/implementation/Captura%20desde%202026-10-14%2013-01-04.png)
 
 ---
+
 
 ### Evidence 7: Shared Folder Integration
 
 Shared folders were configured between host and guest systems.
 
-**Screenshot to include:**
+![Shared Folder Integration](./images/implementation/Captura%20desde%202026-10-14%2012-46-39.png)
 
-- Shared folder configuration in VirtualBox.
-- Shared folder visible from Windows Explorer.
-
-[Screenshot]
+![Shared Folder Integration](./images/implementation/Captura%20desde%202026-10-14%2012-59-53.png)
 
 ---
 
@@ -343,15 +317,9 @@ Shared folders were configured between host and guest systems.
 
 The required legacy applications were successfully validated.
 
-**Screenshot to include:**
-
-- Adobe Photoshop running.
-- Adobe Illustrator running.
-- Adobe InDesign running.
-
-A single screenshot containing all applications is acceptable.
-
-[Screenshot]
+![Legacy Application Validation 1](./images/implementation/Captura%20desde%202026-10-14%2012-55-46.png)
+![Legacy Application Validation 2](./images/implementation/Captura%20desde%202026-10-14%2012-55-16.png)
+![Legacy Application Validation 3](./images/implementation/Captura%20desde%202026-10-14%2012-54-34.png)
 
 ---
 
@@ -359,12 +327,7 @@ A single screenshot containing all applications is acceptable.
 
 A recovery strategy was implemented to preserve the operational state of the legacy environment.
 
-**Screenshot to include:**
-
-- VirtualBox snapshot manager.
-- Snapshot visible and properly named.
-
-[Screenshot]
+![Snapshot and Backup Strategy](./images/implementation/Captura%20desde%202026-10-14%2012-44-52.png)
 
 ---
 
@@ -372,31 +335,10 @@ A recovery strategy was implemented to preserve the operational state of the leg
 
 The final solution operates according to the target architecture.
 
-**Screenshot to include:**
-
-- Ubuntu host desktop.
-- VirtualBox running.
-- Windows 10 guest running.
-- Adobe application open.
-- Shared folder accessible.
-
-This screenshot should represent the completed project.
-
-[Screenshot]
+![Final Operational Environment](./images/implementation/Captura%20desde%202026-10-14%2013-50-33.png)
 
 ---
 
-### Evidence 11: Clean Windows Virtual Machine
-
-A new Windows virtual machine was designed to evaluate a simplified long-term replacement for the recovered legacy environment.
-
-**Screenshot to include:**
-
-- Windows installation process.
-- Or completed clean Windows VM.
-
-[Screenshot]
----
 
 ## 12. Conclusion
 
