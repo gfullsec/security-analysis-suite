@@ -296,7 +296,7 @@ The recovered Windows environment successfully booted as a virtual machine.
 
 ### Evidence 6: Windows 10 Clean Running
 
-The recovered Windows environment successfully booted as a virtual machine.
+The new clean Windows environment successfully booted as a virtual machine.
 
 ![Windows 10 Clean Running](./images/implementation/Captura%20desde%202026-10-14%2013-01-04.png)
 
