@@ -268,7 +268,7 @@ A dedicated SSD was prepared and mounted for virtualization activities.
 
 ### Evidence 3: Legacy Disk Conversion
 
-The original Windows installation was successfully converted from VHD to VDI format.
+The original Windows installation was successfully extracted to VHD format
 
 ![Legacy Disk Conversion](./images/implementation/Captura%20de%20pantalla%202026-10-07%20205332.png)
 
