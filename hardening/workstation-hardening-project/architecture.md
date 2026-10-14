@@ -169,56 +169,55 @@ The solution follows several security-focused principles:
 
 ### 9.1 Physical Architecture
 
-```
-    INTERNET
-        │
-        ▼
+```text
+                    INTERNET
+                        │
+                        ▼
 
-Ubuntu 26.04 LTS Workstation
-        │
-        ├── Internal System SSD
-        │
-        └── Recovered SSD
-              │
-              ├── Documentation
-              ├── Backups
-              ├── Shared Workspace
-              └── VM Exports
+              Ubuntu 26.04 LTS Host
+                        │
+                        ▼
+
+                  Recovered SSD
+                        │
+        ┌───────────────┼───────────────┐
+        │               │               │
+        ▼               ▼               ▼
+
+ Documentation      Backups     Shared Workspace
+                                        │
+                                        ▼
+
+                                   VM Exports
 ```
 
 ### 9.2 Logical Architecture
 
-```
-Ubuntu 26.04 LTS Primary Host
-│
-├── Security Analysis
-│   ├── Lynis
-│   ├── OpenVAS
-│   └── Audit Scripts
-│
-├── Development
-│   ├── Git
-│   ├── Python
-│   └── VS Code
-│
-├── Design Tools
-│   ├── GIMP
-│   └── Inkscape
-│
-└── Virtualization
-    └── VirtualBox
-        └── Windows 10 VM
-            ├── Photoshop
-            └── Illustrator
+```text
+                Ubuntu 26.04 LTS Host
+                         │
+     ┌──────────────┬────┼────┬──────────────┐
+     │              │         │              │
+     ▼              ▼         ▼              ▼
+
+  Firefox     Development   VirtualBox   GIMP / Inkscape
+                Tools           │
+                                ▼
+
+                          Windows 10 VM
+                                │
+                    ┌───────────┴───────────┐
+                    ▼                       ▼
+
+                Photoshop              Illustrator
 ```
 
 ### Architecture Overview
 
-The project is built around an Ubuntu 26.04 LTS workstation that serves as the primary platform for security analysis, development, documentation, and virtualization activities.
+The project environment is based on an Ubuntu 26.04 LTS workstation connected to a recovered SSD used for documentation, backups, shared resources, and virtual machine exports.
 
-The physical architecture separates the operating system from the recovered SSD used for project storage, backups, shared workspace data, and virtual machine exports.
-
-The logical architecture organizes the environment into security analysis, development, design, and virtualization domains. A dedicated Windows 10 virtual machine is maintained for Adobe-based workflows while the primary security and development activities are performed directly on the Ubuntu host.
+The logical architecture separates the primary Ubuntu host environment from the Windows 10 virtual machine used for Adobe-based workflows. VirtualBox provides the virtualization layer, while design and productivity tools are distributed between the host and guest operating systems according to their intended use.
+```
 
 ---
 
