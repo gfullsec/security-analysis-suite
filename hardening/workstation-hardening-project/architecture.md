@@ -169,6 +169,7 @@ The solution follows several security-focused principles:
 
 ### 9.1 Physical Architecture
 
+'''
     INTERNET
         │
         ▼
@@ -183,10 +184,11 @@ Ubuntu 26.04 LTS Workstation
               ├── Backups
               ├── Shared Workspace
               └── VM Exports
-
+```
 
 ### 9.2 Logical Architecture
 
+```
 Ubuntu 26.04 LTS Primary Host
 │
 ├── Security Analysis
@@ -208,7 +210,7 @@ Ubuntu 26.04 LTS Primary Host
         └── Windows 10 VM
             ├── Photoshop
             └── Illustrator
-
+```
 
 ### Architecture Overview
 
