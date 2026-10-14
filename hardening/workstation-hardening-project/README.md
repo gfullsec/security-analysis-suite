@@ -58,6 +58,7 @@ Ubuntu 26.04 LTS
 - Ubuntu 26.04 LTS
 - VirtualBox
 - Windows 10
+- Disk2Vhd
 - Firefox
 - GIMP
 - Inkscape
