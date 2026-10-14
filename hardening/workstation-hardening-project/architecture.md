@@ -217,7 +217,6 @@ The solution follows several security-focused principles:
 The project environment is based on an Ubuntu 26.04 LTS workstation connected to a recovered SSD used for documentation, backups, shared resources, and virtual machine exports.
 
 The logical architecture separates the primary Ubuntu host environment from the Windows 10 virtual machine used for Adobe-based workflows. VirtualBox provides the virtualization layer, while design and productivity tools are distributed between the host and guest operating systems according to their intended use.
-```
 
 ---
 
