@@ -165,44 +165,58 @@ The solution follows several security-focused principles:
 
 ---
 
-## 9. Target Architecture
+## 9. Architecture
 
-The final target state of the project is illustrated below.
+### 9.1 Physical Architecture
 
-```text
-                           INTERNET
-                               │
-                               ▼
-                      Ubuntu 26.04 LTS
-                         Primary Host
-                               │
-     ┌─────────────────────────┼─────────────────────────┐
-     │                         │                         │
-     ▼                         ▼                         ▼
-  Firefox               Development               GIMP / Inkscape
-                           Tools
-     │
-     ▼
-                     ALMACÉN
-     ├── Data
-     ├── Documentation
-     ├── Backups
-     ├── Shared Workspace
-     └── VM Exports
-             │
-             ▼
-       Recovered SSD
-             │
-             ▼
-         VirtualBox
-             │
-             ▼
-       Windows 10 VM
-             │
-      ┌──────┴──────┐
-      ▼             ▼
- Photoshop     Illustrator
-```
+    INTERNET
+        │
+        ▼
+
+Ubuntu 26.04 LTS Workstation
+        │
+        ├── Internal System SSD
+        │
+        └── Recovered SSD
+              │
+              ├── Documentation
+              ├── Backups
+              ├── Shared Workspace
+              └── VM Exports
+
+
+### 9.2 Logical Architecture
+
+Ubuntu 26.04 LTS Primary Host
+│
+├── Security Analysis
+│   ├── Lynis
+│   ├── OpenVAS
+│   └── Audit Scripts
+│
+├── Development
+│   ├── Git
+│   ├── Python
+│   └── VS Code
+│
+├── Design Tools
+│   ├── GIMP
+│   └── Inkscape
+│
+└── Virtualization
+    └── VirtualBox
+        └── Windows 10 VM
+            ├── Photoshop
+            └── Illustrator
+
+
+### Architecture Overview
+
+The project is built around an Ubuntu 26.04 LTS workstation that serves as the primary platform for security analysis, development, documentation, and virtualization activities.
+
+The physical architecture separates the operating system from the recovered SSD used for project storage, backups, shared workspace data, and virtual machine exports.
+
+The logical architecture organizes the environment into security analysis, development, design, and virtualization domains. A dedicated Windows 10 virtual machine is maintained for Adobe-based workflows while the primary security and development activities are performed directly on the Ubuntu host.
 
 ---
 
