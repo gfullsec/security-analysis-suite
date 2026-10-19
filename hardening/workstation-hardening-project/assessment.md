@@ -32,12 +32,10 @@ Additionally, this strategy helps reduce reliance on new proprietary software pu
 ![Wacom Bamboo CTL-460 graphics tablet](./images/assessments/Captura%20desde%202026-10-13%2013-00-03.png)
 
 - Canon MF3010 printer and scanner
-> [!TODO]
-> Add a photo of the Canon MF3010.
+![Impresora 2](./images/assessments/Captura%20desde%202026-10-19%2019-01-53.png)
 
 - HP LaserJet 5000N printer
-> [!TODO]
-> Add a photo of the HP LaserJet 5000N.
+![Impresora 1](./images/assessments/Captura%20desde%202026-10-19%2019-01-18.png)
 
 ### User Profile
 

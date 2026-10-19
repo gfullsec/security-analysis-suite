@@ -32,12 +32,10 @@ Adicionalmente, esta estrategia permite reducir la dependencia de nuevas adquisi
 ![Tableta gráfica Wacom Bamboo CTL-460](./images/assessments/Captura%20desde%202026-10-13%2013-00-03.png)
 
 - Impresora - Escáner Canon MF3010
-> [!TODO]
-> Añadir fotografía de la Canon MF3010.
+![Impresora 2](./images/assessments/Captura%20desde%202026-10-19%2019-01-53.png)
 
 - Impresora HP LaserJet 5000N
-> [!TODO]
-> Añadir fotografía de la HP LaserJet 5000N.
+![Impresora 1](./images/assessments/Captura%20desde%202026-10-19%2019-01-18.png)
 
 ### Perfil de usuario
 
