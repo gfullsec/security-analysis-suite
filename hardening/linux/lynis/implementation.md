@@ -39,11 +39,13 @@ sudo apt install needrestart -y
 
 #### Validation
 
-To be completed.
+The package was successfully installed and configured.
+
+Needrestart is now available to identify services requiring a restart after software updates and package upgrades.
 
 #### Evidence
 
-To be added.
+![Needrestart installation](images/needrestart-installation.png)
 
 ---
 
@@ -68,11 +70,23 @@ sudo apt install fail2ban -y
 
 #### Validation
 
-To be completed.
+Fail2ban was successfully installed and the service started automatically after installation.
+
+The service was verified as active and enabled through systemd.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Fail2ban Installation
+
+The package was successfully installed together with the required dependencies.
+
+![Fail2ban installation](images/fail2ban-installation.png)
+
+##### Evidence 02 – Service Status Verification
+
+The Fail2ban service was verified as active and running after installation.
+
+![Fail2ban service status](images/fail2ban-service-status.png)
 
 ---
 
@@ -260,8 +274,8 @@ To be added.
 
 | ID | Related Finding | Measure | Status |
 |-----------|-----------|-----------|-----------|
-| IMPL-001 | DEB-0831 | Needrestart | Pending |
-| IMPL-002 | DEB-0880 | Fail2ban | Pending |
+| IMPL-001 | DEB-0831 | Needrestart | Implemented |
+| IMPL-002 | DEB-0880 | Fail2ban | Implemented |
 | IMPL-003 | FIRE-4590 | UFW Firewall | Pending |
 | IMPL-004 | ACCT-9622 | Process Accounting | Pending |
 | IMPL-005 | ACCT-9628 | Auditd | Pending |
