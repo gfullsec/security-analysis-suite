@@ -154,11 +154,17 @@ sudo apt install acct -y
 
 #### Validation
 
-To be completed.
+Process accounting was successfully installed and enabled.
+
+The accounting service was verified through systemd and confirmed as active after installation.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Process Accounting Installation and Validation
+
+The accounting package was installed successfully and the service was verified after deployment.
+
+![Process Accounting Installation and Validation](images/acct-installation-and-validation.png)
 
 ---
 
@@ -285,7 +291,7 @@ To be added.
 | IMPL-001 | DEB-0831 | Needrestart | Implemented |
 | IMPL-002 | DEB-0880 | Fail2ban | Implemented |
 | IMPL-003 | FIRE-4590 | UFW Firewall | Implemented |
-| IMPL-004 | ACCT-9622 | Process Accounting | Pending |
+| IMPL-004 | ACCT-9622 | Process Accounting | Implemented |
 | IMPL-005 | ACCT-9628 | Auditd | Pending |
 | IMPL-006 | FINT-4350 | AIDE | Pending |
 | IMPL-007 | PKGS-7370 | Debsums | Pending |
