@@ -189,11 +189,23 @@ sudo apt install auditd -y
 
 #### Validation
 
-To be completed.
+Auditd was successfully installed and enabled.
+
+The service was verified through systemd and confirmed as active and running after installation.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Auditd Installation
+
+The auditd package and required dependencies were successfully installed.
+
+![Auditd Installation](images/auditd-installation.png)
+
+##### Evidence 02 – Auditd Service Validation
+
+The auditd service was verified after installation and confirmed as active and running.
+
+![Auditd Service Status](images/auditd-service-status.png)
 
 ---
 
@@ -292,7 +304,7 @@ To be added.
 | IMPL-002 | DEB-0880 | Fail2ban | Implemented |
 | IMPL-003 | FIRE-4590 | UFW Firewall | Implemented |
 | IMPL-004 | ACCT-9622 | Process Accounting | Implemented |
-| IMPL-005 | ACCT-9628 | Auditd | Pending |
+| IMPL-005 | ACCT-9628 | Auditd | Implemented |
 | IMPL-006 | FINT-4350 | AIDE | Pending |
 | IMPL-007 | PKGS-7370 | Debsums | Pending |
 | IMPL-008 | PKGS-7394 | Apt-show-versions | Pending |
