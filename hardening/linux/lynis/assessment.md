@@ -125,18 +125,81 @@ The system presents a reasonably secure default configuration for a clean Ubuntu
 
 ## Findings Summary
 
-The recommendations provided by Lynis are primarily distributed across the following categories:
+The initial Lynis assessment identified 39 security recommendations distributed across multiple security domains.
 
-- Package management.
-- Account and password management.
-- Service configuration.
-- Auditing and monitoring.
-- File integrity.
-- Network security.
-- System hardening.
-- Kernel configuration.
+The recommendations primarily affect:
 
-A detailed classification of the findings will be performed during the analysis phase and will serve as the basis for selecting the hardening measures to be implemented.
+- Package management and system maintenance.
+- Authentication and password policies.
+- Service and system configuration.
+- Auditing and monitoring capabilities.
+- File integrity monitoring.
+- Network and firewall configuration.
+- System hardening controls.
+- Kernel and operating system security settings.
+
+No critical warnings were detected during the assessment. However, several recommendations were identified that could improve the overall security posture of the system and increase the Hardening Index.
+
+To support remediation planning, the findings were reviewed and classified according to their impact, complexity, and applicability within the scope of this laboratory environment.
+
+---
+
+## Findings Classification
+
+### Quick Wins
+
+The following recommendations can be implemented with minimal impact and are expected to provide an immediate security benefit.
+
+| ID | Recommendation | Risk | Action |
+|-----------|-----------|-----------|-----------|
+| DEB-0831 | Install needrestart | Low | Implement |
+| DEB-0880 | Install fail2ban | Medium | Implement |
+| FIRE-4590 | Configure a firewall | Medium | Implement |
+| ACCT-9622 | Enable process accounting | Medium | Implement |
+| ACCT-9628 | Enable auditd | Medium | Implement |
+| FINT-4350 | Install file integrity monitoring | Medium | Implement |
+| PKGS-7370 | Install debsums | Low | Implement |
+| PKGS-7394 | Install apt-show-versions | Low | Implement |
+
+### Requires Analysis
+
+The following recommendations require additional review before implementation due to their potential operational impact.
+
+| ID | Recommendation | Risk | Action |
+|-----------|-----------|-----------|-----------|
+| BOOT-5122 | Protect GRUB with a password | Medium | Review |
+| BOOT-5264 | Harden systemd services | Medium | Review |
+| AUTH-9229 | Review PAM password hashing configuration | Medium | Review |
+| AUTH-9230 | Configure password hashing rounds | Medium | Review |
+| AUTH-9282 | Configure account expiration policies | Medium | Review |
+| AUTH-9286 | Configure password aging policies | Medium | Review |
+| AUTH-9328 | Harden default umask settings | Medium | Review |
+| FILE-7524 | Restrict file permissions | Medium | Review |
+| KRNL-6000 | Review sysctl configuration | High | Review |
+| HRDN-7222 | Restrict compiler access | Medium | Review |
+| HRDN-7230 | Deploy malware detection tooling | Medium | Review |
+| PRNT-2307 | Restrict CUPS configuration access | Low | Review |
+
+### Not Applicable
+
+The following recommendations are considered outside the scope of this laboratory environment or would provide limited value for the project objectives.
+
+| ID | Recommendation | Reason |
+|-----------|-----------|-----------|
+| FILE-6310 | Separate /home partition | Not required in temporary laboratory VM |
+| FILE-6310 | Separate /var partition | Not required in temporary laboratory VM |
+| USB-1000 | Disable USB storage support | USB functionality may be required during testing |
+| LOGG-2154 | External logging server | No centralized logging infrastructure exists |
+| NAME-4028 | Configure DNS domain name | Not relevant to standalone VM |
+| TOOL-5002 | Automation tooling detection | Informational recommendation |
+| NETW-3200 | Review DCCP protocol | Low priority for laboratory environment |
+| NETW-3200 | Review SCTP protocol | Low priority for laboratory environment |
+| NETW-3200 | Review RDS protocol | Low priority for laboratory environment |
+| NETW-3200 | Review TIPC protocol | Low priority for laboratory environment |
+
+### Pending Review
+
+The remaining recommendations will be assessed during the implementation phase and evaluated individually to determine whether they should be implemented, deferred, or excluded from the project scope.
 
 ---
 
