@@ -106,22 +106,30 @@ Control incoming and outgoing network traffic according to defined security rule
 #### Implementation
 
 ```bash
-sudo apt install ufw -y
-
 sudo ufw default deny incoming
-
 sudo ufw default allow outgoing
-
 sudo ufw enable
 ```
 
 #### Validation
 
-To be completed.
+UFW was configured with a default deny policy for inbound traffic and a default allow policy for outbound traffic.
+
+The firewall was successfully enabled and verified using the UFW status command.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Baseline Firewall Status
+
+The firewall was installed but inactive before configuration.
+
+![UFW inactive status](images/ufw-baseline-status.png)
+
+##### Evidence 02 – Firewall Configuration and Activation
+
+The firewall was configured and enabled using secure default policies.
+
+![UFW enabled status](images/ufw-enabled-status.png)
 
 ---
 
@@ -276,7 +284,7 @@ To be added.
 |-----------|-----------|-----------|-----------|
 | IMPL-001 | DEB-0831 | Needrestart | Implemented |
 | IMPL-002 | DEB-0880 | Fail2ban | Implemented |
-| IMPL-003 | FIRE-4590 | UFW Firewall | Pending |
+| IMPL-003 | FIRE-4590 | UFW Firewall | Implemented |
 | IMPL-004 | ACCT-9622 | Process Accounting | Pending |
 | IMPL-005 | ACCT-9628 | Auditd | Pending |
 | IMPL-006 | FINT-4350 | AIDE | Pending |
