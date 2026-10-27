@@ -289,11 +289,23 @@ sudo apt install debsums -y
 
 #### Validation
 
-To be completed.
+Debsums was successfully installed and verified after deployment.
+
+The utility is now available to verify package file integrity against known package checksums.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Debsums Installation
+
+The debsums package and its required dependencies were successfully installed.
+
+![Debsums installation](images/debsums-installation.png)
+
+##### Evidence 02 – Debsums Validation
+
+The utility was verified after installation and confirmed operational.
+
+![Debsums validation](images/debsums-validation.png)
 
 ---
 
@@ -336,7 +348,7 @@ To be added.
 | IMPL-004 | ACCT-9622 | Process Accounting | Implemented |
 | IMPL-005 | ACCT-9628 | Auditd | Implemented |
 | IMPL-006 | FINT-4350 | AIDE | Implemented |
-| IMPL-007 | PKGS-7370 | Debsums | Pending |
+| IMPL-007 | PKGS-7370 | Debsums | Implemented |
 | IMPL-008 | PKGS-7394 | Apt-show-versions | Pending |
 
 ---
