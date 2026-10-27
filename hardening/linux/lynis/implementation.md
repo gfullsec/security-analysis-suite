@@ -330,11 +330,24 @@ sudo apt install apt-show-versions -y
 
 #### Validation
 
-To be completed.
+The apt-show-versions utility was successfully installed and verified after deployment.
+
+The tool is now available to review package versions and identify package upgrade status information.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Apt-show-versions Installation
+
+The apt-show-versions package and its required dependencies were successfully installed.
+
+![Apt-show-versions installation](images/apt-show-versions-installation.png)
+
+##### Evidence 02 – Apt-show-versions Validation
+
+The utility was verified after installation and confirmed operational.
+
+![Apt-show-versions validation](images/apt-show-versions-validation.png)
+
 
 ---
 
@@ -349,7 +362,7 @@ To be added.
 | IMPL-005 | ACCT-9628 | Auditd | Implemented |
 | IMPL-006 | FINT-4350 | AIDE | Implemented |
 | IMPL-007 | PKGS-7370 | Debsums | Implemented |
-| IMPL-008 | PKGS-7394 | Apt-show-versions | Pending |
+| IMPL-008 | PKGS-7394 | Apt-show-versions | Implemented |
 
 ---
 
