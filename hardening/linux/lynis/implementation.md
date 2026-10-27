@@ -226,15 +226,45 @@ Monitor critical system files and detect unauthorized modifications.
 
 ```bash
 sudo apt install aide -y
+sudo aideinit
 ```
 
 #### Validation
 
-To be completed.
+AIDE was successfully installed and an initial integrity database was generated.
+
+The initialization process created the baseline integrity database files required for future integrity verification activities.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – AIDE Installation
+
+The AIDE package and its required dependencies were successfully installed.
+
+![AIDE Installation](images/aide-installation.png)
+
+##### Evidence 02 – Postfix Configuration
+
+During the installation process, AIDE requested Postfix configuration options required for notification capabilities.
+
+The laboratory environment was configured without mail services.
+
+![AIDE Postfix Configuration](images/aide-postfix-configuration.png)
+
+
+##### Evidence 03 – Integrity Database Initialization
+
+The initial integrity baseline was created using the AIDE initialization process.
+
+![AIDE Initialization](images/aide-initialization.png)
+
+##### Evidence 04 – Integrity Database Verification
+
+The generated integrity database files were verified after initialization.
+
+The presence of both `aide.db` and `aide.db.new` confirms successful baseline database creation.
+
+![AIDE Database Verification](images/aide-database-created.png)
 
 ---
 
@@ -305,7 +335,7 @@ To be added.
 | IMPL-003 | FIRE-4590 | UFW Firewall | Implemented |
 | IMPL-004 | ACCT-9622 | Process Accounting | Implemented |
 | IMPL-005 | ACCT-9628 | Auditd | Implemented |
-| IMPL-006 | FINT-4350 | AIDE | Pending |
+| IMPL-006 | FINT-4350 | AIDE | Implemented |
 | IMPL-007 | PKGS-7370 | Debsums | Pending |
 | IMPL-008 | PKGS-7394 | Apt-show-versions | Pending |
 
