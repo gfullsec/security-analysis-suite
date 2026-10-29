@@ -94,19 +94,46 @@ Configure ransomware protection
 
 #### Objective
 
-Enable and configure ransomware protection features available within Microsoft Defender to improve protection against unauthorized file modification and encryption attempts.
+Enable Microsoft Defender ransomware protection features to reduce the risk of unauthorized file modification and improve protection against ransomware attacks.
 
 #### Implementation
 
-To be completed.
+Controlled Folder Access was enabled through Windows Security.
+
+This feature restricts unauthorized applications from modifying protected folders and provides an additional layer of defense against ransomware activity.
 
 #### Validation
 
-To be completed.
+The ransomware protection configuration was reviewed before implementation and Controlled Folder Access was found to be disabled.
+
+Following implementation, Controlled Folder Access was successfully enabled through Microsoft Defender.
+
+The feature is now actively protecting default Windows protected folders against unauthorized modification attempts.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Initial Ransomware Protection Configuration
+
+The ransomware protection settings were reviewed before implementation.
+
+Controlled Folder Access was disabled.
+
+![Initial ransomware protection configuration](images/ransomware-protection-before.png)
+
+##### Evidence 02 – Baseline Defender Status
+
+The baseline Microsoft Defender configuration confirmed that ransomware protection was available but not yet configured.
+
+![Microsoft Defender baseline configuration](images/ransomware-protection-before-2.png)
+
+##### Evidence 03 – Controlled Folder Access Enabled
+
+Controlled Folder Access was successfully enabled through Microsoft Defender.
+
+The ransomware protection feature is now active and protecting configured folders from unauthorized changes.
+
+![Controlled Folder Access enabled](images/ransomware-protection-enabled.png)
+
 
 ---
 
@@ -169,7 +196,7 @@ To be added.
 | ID | Related Finding | Measure | Status |
 |-----------|-----------|-----------|-----------|
 | IMPL-001 | WIN-001 | BitLocker Protection | Implemented |
-| IMPL-002 | WIN-002 | Ransomware Protection | Pending |
+| IMPL-002 | WIN-002 | Ransomware Protection | Implemented |
 | IMPL-003 | WIN-003 | PowerShell Execution Policy | Pending |
 | IMPL-004 | WIN-004 | Audit Policy Enhancement | Pending |
 
