@@ -201,16 +201,53 @@ Increase auditing visibility by enabling additional audit categories relevant to
 
 #### Implementation
 
-To be completed.
+Additional Windows audit policies were enabled to improve monitoring and event visibility.
+
+The following audit categories were configured:
+
+```powershell
+auditpol /set /subcategory:"Process Creation" /success:enable
+
+auditpol /set /subcategory:"Sensitive Privilege Use" /success:enable
+
+auditpol /set /subcategory:"Process Termination" /success:enable
+```
 
 #### Validation
 
-To be completed.
+The audit policy configuration was reviewed after implementation.
+
+The assessment confirmed that auditing was successfully enabled for:
+
+- Process Creation
+- Process Termination
+- Sensitive Privilege Use
+
+These events provide additional visibility into process execution activity and the use of elevated privileges, improving monitoring and forensic investigation capabilities.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Audit Policy Enhancement
 
+The selected audit categories were enabled successfully using the Windows audit policy utility.
+
+```powershell
+auditpol /set /subcategory:"Process Creation" /success:enable
+
+auditpol /set /subcategory:"Sensitive Privilege Use" /success:enable
+
+auditpol /set /subcategory:"Process Termination" /success:enable
+```
+
+The audit policy configuration was reviewed after implementation.
+
+The assessment confirmed that Process Creation, Process Termination, and Sensitive Privilege Use auditing were successfully enabled.
+
+```powershell
+auditpol /get /category:*
+```
+![Audit Policy Enhancement Commands](images/audit-policy-enhanced.png)
+![Audit Policy Validation](images/audit-policy-enhanced-2.png)
 ---
 
 ## Implementation Summary
@@ -220,7 +257,7 @@ To be added.
 | IMPL-001 | WIN-001 | BitLocker Protection | Implemented |
 | IMPL-002 | WIN-002 | Ransomware Protection | Implemented |
 | IMPL-003 | WIN-003 | PowerShell Execution Policy | Implemented |
-| IMPL-004 | WIN-004 | Audit Policy Enhancement | Pending |
+| IMPL-004 | WIN-004 | Audit Policy Enhancement | Implemented |
 
 ---
 
