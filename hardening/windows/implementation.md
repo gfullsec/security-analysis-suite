@@ -16,8 +16,6 @@ These recommendations were prioritized because they provide immediate security b
 
 ---
 
-## Implemented Measures
-
 ### IMPL-001 – BitLocker Protection Enablement
 
 #### Related Finding
@@ -33,15 +31,55 @@ Enable BitLocker protection mechanisms and configure appropriate key protectors 
 
 #### Implementation
 
-To be completed.
+A TPM-based key protector was added to the operating system volume.
+
+```powershell
+manage-bde -protectors -add C: -tpm
+```
 
 #### Validation
 
-To be completed.
+The existing BitLocker encryption configuration was reviewed before implementation and no key protectors were configured on the operating system volume.
+
+After implementation, a TPM protector was successfully added and associated with the encrypted volume.
+
+The TPM protector uses Secure Boot integrity validation through PCR values 7 and 11, providing protection for the encrypted operating system volume.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – Initial BitLocker Configuration
+
+The encrypted operating system volume was reviewed before implementation.
+
+No BitLocker protectors were configured at the time of the assessment.
+
+```powershell
+manage-bde -protectors -get C:
+```
+
+![BitLocker protectors before implementation](images/bitlocker-protectors-before.png)
+
+##### Evidence 02 – TPM Protector Creation
+
+A TPM-based BitLocker protector was successfully created.
+
+```powershell
+manage-bde -protectors -add C: -tpm
+```
+
+![BitLocker TPM protector creation](images/bitlocker-tpm-protector-added.png)
+
+##### Evidence 03 – Protector Verification
+
+The BitLocker configuration was reviewed after implementation.
+
+The TPM protector was successfully associated with the operating system volume.
+
+```powershell
+manage-bde -protectors -get C:
+```
+
+![BitLocker protectors after implementation](images/bitlocker-protectors-after.png)
 
 ---
 
@@ -130,7 +168,7 @@ To be added.
 
 | ID | Related Finding | Measure | Status |
 |-----------|-----------|-----------|-----------|
-| IMPL-001 | WIN-001 | BitLocker Protection | Pending |
+| IMPL-001 | WIN-001 | BitLocker Protection | Implemented |
 | IMPL-002 | WIN-002 | Ransomware Protection | Pending |
 | IMPL-003 | WIN-003 | PowerShell Execution Policy | Pending |
 | IMPL-004 | WIN-004 | Audit Policy Enhancement | Pending |
