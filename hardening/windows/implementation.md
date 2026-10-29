@@ -152,15 +152,37 @@ Define an appropriate PowerShell execution policy to restrict script execution w
 
 #### Implementation
 
-To be completed.
+The LocalMachine execution policy was configured to use the RemoteSigned policy.
+
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
+```
 
 #### Validation
 
-To be completed.
+PowerShell execution policies were reviewed before implementation and all scopes were found to be configured as Undefined.
+
+A RemoteSigned execution policy was then applied to the LocalMachine scope.
+
+The final configuration confirmed that LocalMachine was successfully configured with the RemoteSigned policy while the remaining scopes remained unchanged.
+
+This configuration allows locally created scripts to run while requiring downloaded scripts to be signed.
 
 #### Evidence
 
-To be added.
+##### Evidence 01 – PowerShell Execution Policy Configuration and Validation
+
+The execution policy configuration was reviewed before implementation, the RemoteSigned policy was applied, and the resulting configuration was verified.
+
+```powershell
+Get-ExecutionPolicy -List
+
+Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
+
+Get-ExecutionPolicy -List
+```
+
+![PowerShell Execution Policy Configuration and Validation](images/powershell-execution-policy-configured.png)
 
 ---
 
@@ -197,7 +219,7 @@ To be added.
 |-----------|-----------|-----------|-----------|
 | IMPL-001 | WIN-001 | BitLocker Protection | Implemented |
 | IMPL-002 | WIN-002 | Ransomware Protection | Implemented |
-| IMPL-003 | WIN-003 | PowerShell Execution Policy | Pending |
+| IMPL-003 | WIN-003 | PowerShell Execution Policy | Implemented |
 | IMPL-004 | WIN-004 | Audit Policy Enhancement | Pending |
 
 ---
